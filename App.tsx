@@ -1,12 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { TamaguiProvider } from 'tamagui'
+
+import config from './tamagui.config'
+
 export default function App() {
   return (
+    <TamaguiProvider config={config}>
     <View style={styles.container}>
       <Text>Hackathon</Text>
       <StatusBar style="auto" />
     </View>
+    </TamaguiProvider>
   );
 }
 
