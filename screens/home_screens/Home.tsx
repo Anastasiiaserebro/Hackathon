@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { RootStackParamList } from "../../App";
-import { Text, Button, View } from "tamagui";
+import { Text, Button, View, Image } from "tamagui";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Home">;
