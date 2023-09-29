@@ -1,22 +1,22 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { RootStackParamList } from "../../App";
-import { Button, View } from "tamagui";
+import { View } from "tamagui";
 import { SafeAreaView } from "react-native-safe-area-context";
-import MainScreen from "./components/MainScreen";
+import { DocList } from "./components/DocList";
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Home">;
 
 export function HomeScreen({ navigation }: HomeScreenProps) {
+
+  const getId = (id:string) => {
+    navigation.navigate("DocumentDetails", { id })
+  }
+
   return (
     <SafeAreaView>
       <View>
-        {/* <Button
-          onPress={() => navigation.navigate("DocumentDetails", { id: "5" })}
-        >
-          Go to Details
-        </Button> */}
-        <MainScreen />
+        <DocList getId={getId}/>
       </View>
     </SafeAreaView>
   );

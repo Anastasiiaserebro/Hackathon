@@ -1,12 +1,13 @@
 import {XStack, YStack, Text, styled, ListItem, View } from 'tamagui';
-
-import { DocsType, StatusType } from './MainScreen';
+import { NativeStackNavigationProp} from "@react-navigation/native-stack";
+import { DocsType, StatusType } from './DocList';
 
 type DocItemProps = {
-  doc: DocsType
+  doc: DocsType,
+  getId: (id:string) => void
 }
 
-export const DocItem: React.FC<DocItemProps> = ({ doc }) => {
+export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
 
   const { title, category, id, date, status, statusDate } = doc;
 
@@ -43,7 +44,7 @@ export const DocItem: React.FC<DocItemProps> = ({ doc }) => {
 
   return (
     
-    <ListItem  backgroundColor="#fff" borderRadius={15}>
+    <ListItem  backgroundColor="#fff" borderRadius={15} onPress={() => getId(id)}>
       <XStack>
       <LineView variableColor={status}></LineView>
         <YStack space={8}>
