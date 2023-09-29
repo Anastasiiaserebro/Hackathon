@@ -36,6 +36,7 @@ export function HomeStackNavigator() {
         options={{
           headerBackTitle: "Назад",
           headerTitle: "",
+          animation: "slide_from_right",
         }}
       />
     </RootStack.Navigator>
