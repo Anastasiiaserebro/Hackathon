@@ -2,14 +2,13 @@ import { useFonts } from "expo-font";
 import { TamaguiProvider } from "tamagui";
 import config from "./tamagui.config";
 import { NavigationContainer } from "@react-navigation/native";
-import {
-  createNativeStackNavigator,
-} from "@react-navigation/native-stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeScreen } from "./screens/home_screens/Home";
 import { DetailsScreen } from "./screens/home_screens/DocumentDetails";
 import ProfileScreen from "./screens/profile_screens/Profile";
 import { AchievementsScreen } from "./screens/achievement_screens/Achievements";
+import { Ionicons } from "@expo/vector-icons";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -17,6 +16,8 @@ export type RootStackParamList = {
   Profile: undefined;
   Achievements: undefined;
 };
+
+const iconSize = 16;
 
 export const RootStack = createNativeStackNavigator<RootStackParamList>();
 export const Tab = createBottomTabNavigator();
@@ -59,10 +60,36 @@ function AchievementsStackNavigator() {
 
 function TabNavigator() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Главная" component={HomeStackNavigator} />
-      <Tab.Screen name="Профиль" component={ProfileStackNavigator} />
-      <Tab.Screen name="Достижения" component={AchievementsStackNavigator} />
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen
+        name="Главная"
+        component={HomeStackNavigator}
+        options={{
+          tabBarIcon: () => <Ionicons name={"home-outline"} size={iconSize} />,
+        }}
+      />
+      <Tab.Screen
+        name="Профиль"
+        component={ProfileStackNavigator}
+        options={{
+          tabBarIcon: () => (
+            <Ionicons name={"person-outline"} size={iconSize} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Достижения"
+        component={AchievementsStackNavigator}
+        options={{
+          tabBarIcon: () => (
+            <Ionicons name={"trophy-outline"} size={iconSize} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
