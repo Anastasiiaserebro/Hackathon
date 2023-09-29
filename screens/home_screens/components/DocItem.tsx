@@ -48,14 +48,14 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
       <XStack>
       <LineView variableColor={status}></LineView>
         <YStack space={8}>
-          <Text color='$default'>{id}</Text>
-          <Text color='$default'>{category}</Text>
-          <Text color='$default'>{title}</Text>
+          <Text >{id}</Text>
+          <Text >{category}</Text>
+          <Text >{title}</Text>
           <DateText variableColor={status}>{statusDate}</DateText>
         </YStack>
       </XStack>
       <YStack justifyContent='flex-start' height='100%'>
-        <Text color='$default'>{date}</Text>
+        <Text>{date}</Text>
       </YStack>
     </ListItem>
 

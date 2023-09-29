@@ -29,7 +29,12 @@ const interFont = createFont({
   })
 
 const appConfig = createTamagui({
-  themes,
+  themes: {
+    light: {
+      color: '#000',
+      background: '#fff',
+    },
+  },
   tokens,
   shorthands,
   fonts: {

@@ -1,7 +1,7 @@
 import { DocsType } from "./DocList"
 export const docs:DocsType[] = [
     {
-        title: "Документ",
+        title: "Накладная",
         category: 'OC-2',
         id: '#1',
         date: '01.02.23',
@@ -17,7 +17,7 @@ export const docs:DocsType[] = [
         statusDate: 'Согласовано 09.09.23'
     },
     {
-        title: "Документ",
+        title: "Еще Документ",
         category: 'OC-2',
         id: '#3',
         date: '01.02.23',

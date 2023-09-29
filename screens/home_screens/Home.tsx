@@ -15,7 +15,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
 
   return (
     <SafeAreaView>
-      <View>
+      <View backgroundColor='#fff' >
         <DocList getId={getId}/>
       </View>
     </SafeAreaView>
