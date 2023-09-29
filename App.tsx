@@ -1,25 +1,71 @@
-import { StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 import { TamaguiProvider } from "tamagui";
-import { ButtonGroup } from "./components/ButtonGroup";
 import config from "./tamagui.config";
-import { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import {
+  createNativeStackNavigator,
+} from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { HomeScreen } from "./screens/home_screens/Home";
+import { DetailsScreen } from "./screens/home_screens/DocumentDetails";
+import ProfileScreen from "./screens/profile_screens/Profile";
+import { AchievementsScreen } from "./screens/achievement_screens/Achievements";
 
-const styles = StyleSheet.create({
-  main: {
-    display: "flex",
-    flexDirection: "column",
-    padding: 30,
-    justifyContent: "space-between",
-    alignItems: "center",
-    position: "absolute",
-    top: 30,
-    left: 10,
-    right: 10,
-    bottom: 10,
-  },
-});
+export type RootStackParamList = {
+  Home: undefined;
+  DocumentDetails: { id: string };
+  Profile: undefined;
+  Achievements: undefined;
+};
+
+export const RootStack = createNativeStackNavigator<RootStackParamList>();
+export const Tab = createBottomTabNavigator();
+
+export function HomeStackNavigator() {
+  return (
+    <RootStack.Navigator>
+      <RootStack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <RootStack.Screen
+        name="DocumentDetails"
+        component={DetailsScreen}
+        options={{
+          headerBackTitle: "Назад",
+          headerTitle: "",
+        }}
+      />
+    </RootStack.Navigator>
+  );
+}
+
+function ProfileStackNavigator() {
+  return (
+    <RootStack.Navigator screenOptions={{ headerShown: false }}>
+      <RootStack.Screen name="Profile" component={ProfileScreen} />
+    </RootStack.Navigator>
+  );
+}
+
+function AchievementsStackNavigator() {
+  return (
+    <RootStack.Navigator screenOptions={{ headerShown: false }}>
+      <RootStack.Screen name="Achievements" component={AchievementsScreen} />
+    </RootStack.Navigator>
+  );
+}
+
+function TabNavigator() {
+  return (
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
+      <Tab.Screen name="Главная" component={HomeStackNavigator} />
+      <Tab.Screen name="Профиль" component={ProfileStackNavigator} />
+      <Tab.Screen name="Достижения" component={AchievementsStackNavigator} />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   const [loaded] = useFonts({
@@ -27,25 +73,15 @@ export default function App() {
     InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
   });
 
-  useEffect(() => {
-    if (loaded) {
-    }
-  }, [loaded]);
-
   if (!loaded) {
     return null;
   }
 
   return (
-    <NavigationContainer>
-      <TamaguiProvider config={config}>
-        <View style={styles.main}>
-          <View>
-            <Text>Hackathon App</Text>
-          </View>
-          <ButtonGroup />
-        </View>
-      </TamaguiProvider>
-    </NavigationContainer>
+    <TamaguiProvider config={config}>
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    </TamaguiProvider>
   );
 }
