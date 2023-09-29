@@ -5,6 +5,7 @@ import { TamaguiProvider } from 'tamagui';
 import { ButtonGroup } from './ButtonGroup';
 import config from './tamagui.config'
 import { useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 
 const MainWrapper = styled.View`
   display:flex;
@@ -35,13 +36,15 @@ export default function App() {
   }
   
   return (
-    <TamaguiProvider config={config}>
-      <MainWrapper>
-        <View >
-          <Text>Hackathon App</Text>
-        </View>
-       <ButtonGroup/>
-    </MainWrapper>
-    </TamaguiProvider>
+    <NavigationContainer>
+      <TamaguiProvider config={config}>
+        <MainWrapper>
+          <View >
+            <Text>Hackathon App</Text>
+          </View>
+         <ButtonGroup/>
+      </MainWrapper>
+      </TamaguiProvider>
+    </NavigationContainer>
   );
 }
