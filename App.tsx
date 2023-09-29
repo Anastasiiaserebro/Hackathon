@@ -1,26 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-import { TamaguiProvider } from 'tamagui'
-
+import { Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import styled from 'styled-components/native';
+import { TamaguiProvider } from 'tamagui';
+import { ButtonGroup } from './ButtonGroup';
 import config from './tamagui.config'
+import { useEffect } from 'react';
+
+const MainWrapper = styled.View`
+  display:flex;
+  padding:10px;
+  justify-content:space-between;
+  align-items: center;
+  position:absolute;
+  top: 30px;
+  left:10px;
+  right:10px;
+  bottom: 10px;
+`
 
 export default function App() {
+  
+  const [loaded] = useFonts({
+    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
+    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
+  });
+
+  useEffect(() => {
+    if (loaded) {
+    }
+  }, [loaded])
+
+  if (!loaded) {
+    return null;
+  }
+  
   return (
     <TamaguiProvider config={config}>
-    <View style={styles.container}>
-      <Text>Hackathon</Text>
-      <StatusBar style="auto" />
-    </View>
+      <MainWrapper>
+        <View >
+          <Text>Hackathon App</Text>
+        </View>
+       <ButtonGroup/>
+    </MainWrapper>
     </TamaguiProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
