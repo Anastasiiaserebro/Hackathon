@@ -1,22 +1,24 @@
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
-import styled from 'styled-components/native';
 import { TamaguiProvider } from 'tamagui';
-import { ButtonGroup } from './ButtonGroup';
+import { ButtonGroup } from './components/ButtonGroup';
 import config from './tamagui.config'
 import { useEffect } from 'react';
 
-const MainWrapper = styled.View`
-  display:flex;
-  padding:10px;
-  justify-content:space-between;
-  align-items: center;
-  position:absolute;
-  top: 30px;
-  left:10px;
-  right:10px;
-  bottom: 10px;
-`
+const styles = StyleSheet.create({
+  main: {
+    display:'flex',
+    flexDirection:'column',
+    padding:30,
+    justifyContent:'space-between',
+    alignItems: 'center',
+    position:'absolute',
+    top: 30,
+    left:10,
+    right:10,
+    bottom: 10,
+    }
+});
 
 export default function App() {
   
@@ -35,13 +37,13 @@ export default function App() {
   }
   
   return (
-    <TamaguiProvider config={config}>
-      <MainWrapper>
+    <TamaguiProvider config={config} >
+      <View style={styles.main}>
         <View >
           <Text>Hackathon App</Text>
         </View>
        <ButtonGroup/>
-    </MainWrapper>
+    </View>
     </TamaguiProvider>
   );
 }
