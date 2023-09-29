@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { TamaguiProvider } from 'tamagui';
-import { ButtonGroup } from './components/ButtonGroup';
 import config from './tamagui.config'
 import { useEffect } from 'react';
+import MainScreen from './screens/MainScreen';
 
 const styles = StyleSheet.create({
   main: {
@@ -38,12 +38,7 @@ export default function App() {
   
   return (
     <TamaguiProvider config={config} >
-      <View style={styles.main}>
-        <View >
-          <Text>Hackathon App</Text>
-        </View>
-       <ButtonGroup/>
-    </View>
+      <MainScreen />
     </TamaguiProvider>
   );
 }
