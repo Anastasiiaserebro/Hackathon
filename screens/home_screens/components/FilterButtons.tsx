@@ -1,5 +1,6 @@
 import { Button, XStack, YStack, styled, Text } from 'tamagui';
 import { FiltersType, filterOptions } from './DocList';
+import { ArrowDown, ArrowUp } from '@tamagui/lucide-icons'
 export type StatusType = 'accept' | 'reject' | 'new';
 
 type FilterButtonsProps = {
@@ -10,10 +11,13 @@ type FilterButtonsProps = {
     },
     setFilter:React.Dispatch<React.SetStateAction<FiltersType>>,
     filter:FiltersType,
+    sortButton: 'ABC' | 'DEC',
+    sortFn:() => void
 }
 
-export const FilterButtons: React.FC<FilterButtonsProps> = ({ docCount, setFilter, filter }) => {
+export const FilterButtons: React.FC<FilterButtonsProps> = ({ docCount, setFilter, filter, sortButton, sortFn }) => {
     return (
+        <YStack>
         <XStack space={0} justifyContent='center' backgroundColor='#fff'>
             <StyledButton onPress={() => setFilter(filterOptions.all)}>
                 <YStack alignItems="center" space={3}>
@@ -34,6 +38,11 @@ export const FilterButtons: React.FC<FilterButtonsProps> = ({ docCount, setFilte
                 </YStack>
             </StyledButton>
         </XStack>
+        <XStack justifyContent='flex-end'>
+            <Button onPress={() => sortFn()} color='#0087CD' icon={sortButton === 'ABC' ? <ArrowDown size="$1" /> : <ArrowUp size="$1" /> }>Сначала новые</Button>
+        </XStack>
+        
+        </YStack>
     );
 }
 

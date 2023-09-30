@@ -8,7 +8,7 @@ const interFont = createFont({
       1: 12,
       2: 14,
       true:12,
-      3: 15,
+      3: 16,
       4: 20,
       5: 30,
     },
