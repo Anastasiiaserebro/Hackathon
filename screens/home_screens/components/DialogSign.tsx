@@ -16,7 +16,6 @@ const DialogSign: React.FC<DialogProps> = ({ docId }) => {
     setModalVisible(!modalVisible);
     mutate();
     setAchievementsModalVisible(true);
-    // setTimeout(() =>  navigate("Home"), 500)
   };
 
   const { mutate } = useMutation({
