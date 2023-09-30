@@ -15,10 +15,16 @@ const DialogSign: React.FC<DialogProps>= ({docId}) => {
     setTimeout(() =>  navigate("Home"), 500)
   };
 
+  // const { mutate } = useMutation({
+  //   mutationKey: ["sign/accept"],
+  //   onSuccess: () => {queryClient.invalidateQueries({queryKey:['docs']})},
+  //   mutationFn: () => API.post('sign', { uid: 1, docId:docId, status: "accept"} ),
+  // });
+
   const { mutate } = useMutation({
     mutationKey: ["sign/accept"],
     onSuccess: () => {queryClient.invalidateQueries({queryKey:['docs']})},
-    mutationFn: () => API.post('sign', { uid: 1, docId:docId, status: "accept"} ),
+    mutationFn: () => API.get(`sign/?uid=1&docId=${docId}&status=accept`),
   });
 
   return (

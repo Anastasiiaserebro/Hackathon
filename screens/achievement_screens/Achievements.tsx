@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { YStack, Text } from "tamagui";
-import { AchievementList } from "./components/AchievementList";
+import { ProgressList } from "./components/ProgressList";
 import { Cat } from "./components/Cat";
 
 export const AchievementsScreen = () => (
@@ -11,7 +11,7 @@ export const AchievementsScreen = () => (
         Достижения
       </Text>
       <Cat money={200} />
-      <AchievementList />
+      <ProgressList />
     </YStack>
   </SafeAreaView>
 );

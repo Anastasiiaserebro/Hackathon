@@ -32,7 +32,7 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
   });
 
 
-  const [filter, setFilter] = useState<FiltersType>(filterOptions.all);
+  const [filter, setFilter] = useState<FiltersType>(filterOptions.toAgree);
   const [searchValue, setSearchValue] = useState<string>("");
   const [sortButton, setSortButton] = useState<SortingType>("ABC");
 
