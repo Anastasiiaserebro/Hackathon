@@ -43,7 +43,7 @@ export function DetailsScreen({ navigation, route }: DetailsScreenProps) {
   const [documentOpeneded, setDocumentOpened] = useState(false);
 
   return (
-    <Wrapper flex={1}>
+    <Wrapper flex={1} backgroundColor='#fff'>
       <YStack
         flex={1}
         space="$5"
