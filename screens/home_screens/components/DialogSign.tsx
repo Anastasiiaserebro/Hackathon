@@ -2,21 +2,24 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, {useState} from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import { API, RootStackParamList } from '../../../App';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
+import { Spinner } from 'tamagui';
 
 
 const DialogSign= () => {
   const [modalVisible, setModalVisible] = useState(false);
-
   const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
 
   const click = () => {
     setModalVisible(!modalVisible)
-   
-  
+    mutate()
     setTimeout(() =>  navigate("Home"), 500)
-
   };
+
+  const { mutate } = useMutation({
+    mutationKey: ["sign"],
+    mutationFn: () => API.post('sign', { uid: 1, docId: "94823123", status: "accept"}),
+  });
 
   return (
     <View style={styles.centeredView}>

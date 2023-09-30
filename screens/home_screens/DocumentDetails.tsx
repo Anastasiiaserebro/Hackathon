@@ -10,10 +10,10 @@ import { Cookie } from "../components/Cookie/Cookie";
 import DialogSign from "./components/DialogSign";
 import DialogReject from "./components/DialogReject";
 
-type DetailsScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  "DocumentDetails"
->;
+// type DetailsScreenProps = NativeStackScreenProps<
+//   RootStackParamList,
+//   "DocumentDetails"
+// >;
 
 const timelineData = [
   {
