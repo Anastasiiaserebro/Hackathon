@@ -125,7 +125,6 @@ const HeaderWrapper = styled(View, {
 const CookieText = styled(Text, {
   color: "#333F48",
   fontSize: 14,
-  marginTop: -6,
 });
 
 const HeaderText = styled(Text, {

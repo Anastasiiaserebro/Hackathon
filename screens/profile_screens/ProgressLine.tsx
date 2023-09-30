@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import {  Paragraph, Progress, SizeTokens, Text,Slider, XStack, YStack } from 'tamagui'
 
-export function ProgressLine() {
-  const level = 100;
-  const [progress, setProgress] = useState(level/20)
+type ProgressLineProps = {
+  level:number;
+}
+
+export const ProgressLine:React.FC<ProgressLineProps> = ({level}) => {
+  const endPoint = 100;
+  const [progress, setProgress] = useState(endPoint/20)
 
   return (
     <>
@@ -11,12 +15,13 @@ export function ProgressLine() {
         <Paragraph height={30} fontSize={20}>
           Мой прогресс
         </Paragraph>
-        <Progress size='$4' value={progress} backgroundColor='#D9D9D9' borderColor='#F49300'>
-         
-          <Progress.Indicator animation="bouncy" />
-         
+        <Progress size='$4' value={progress} backgroundColor='#D9D9D9' >
+          <Progress.Indicator animation="bouncy" backgroundColor='#F49300' /> 
       </Progress>
-      <Text>{progress} из {level} опыта</Text>
+      <XStack justifyContent='space-between'>
+        <Text>{progress} из {endPoint} опыта</Text>
+        <Text>{level} уровень</Text>
+      </XStack>
       </YStack>
     </>
   )

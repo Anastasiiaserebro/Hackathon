@@ -5,6 +5,7 @@ import { FilterButtons } from './FilterButtons';
 import { DocItem } from './DocItem';
 import { Header } from './Header';
 import { getDocCount } from '../../getDocCount';
+import { SafeAreaView } from 'react-native';
 export type StatusType = 'accept' | 'reject' | 'new';
 
 export type DocsType = {
@@ -77,13 +78,15 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
         <YStack>
             <Header onSearch={onSearch}/>
            <FilterButtons docCount={docCount} filter={filter} setFilter={setFilter} sortButton={sortButton} sortFn={sortFn}/>
-           <ScrollView >
+           <SafeAreaView >
+           <ScrollView paddingBottom={600} flex={1}>
             <YStack flex={1} space={16} padding={16}>
             {searchResults.map((doc) => (
                 <DocItem key={doc.id} doc={doc} getId={getId}/>
             ))}
             </YStack>
         </ScrollView>
+        </SafeAreaView >
        
         </YStack>
     );

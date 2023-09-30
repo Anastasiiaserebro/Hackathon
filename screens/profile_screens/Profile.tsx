@@ -1,38 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Avatar, Text, styled, XStack, YStack } from "tamagui";
+import { Avatar, Text, styled, XStack, YStack, Image } from "tamagui";
 import { getDocCount } from "../getDocCount";
 import { docs } from "../docs";
 import { ProgressLine } from "./ProgressLine";
 import { AchievementList } from "./AchievementList";
+import cookie from "../assets/cookie.png";
 
+import avatar from "../assets/avatar-1.png";
 
 const ProfileScreen = () => {
-
+  const [level, setLevel] = useState<number>(4)
   const docCount = getDocCount(docs)
+
   return (
     <SafeAreaView >
       <YStack backgroundColor='#fff' height='120%' padding={28} space={40}>
         <YStack space={30} >
           <Text fontSize={45} fontWeight='700'>Профиль</Text>
           <CentrumYStack>
-
-
             <CentrumYStack>
-              <Avatar circular size="$10" position='relative' >
-                <Avatar.Image src="http://placekitten.com/200/300" />
-                <Avatar.Fallback bc="red" />
+              <Avatar circular size="$10" position='relative'  display='flex' justifyContent='center' alignItems='center'>
+                <Avatar.Image src={avatar} height='100%' width='auto'/>
+                <Avatar.Fallback bc="#F49300" />
               </Avatar>
               <Level>
                   <Crown ><Text fontSize={20}>👑</Text></Crown>
-                <Text fontSize={20}>4</Text>
+                <Text fontSize={20}>{level}</Text>
               </Level>
-
+              <XStack alignItems="center" justifyContent="center">
+                <Image source={cookie} maxWidth={32} maxHeight={32} />
+              <CookieText>205</CookieText>
+               </XStack>
               <Text fontSize={20}>Имя Фамилия</Text>
               <Text fontSize={20}>Должность</Text>
             </CentrumYStack>
-
-
             <XStack space={0} backgroundColor='#fff' width='100%' justifyContent="center">
               <YStack alignItems="center" space={3} width='33%'>
                 <StyledText>{docCount.all}</StyledText>
@@ -49,7 +51,7 @@ const ProfileScreen = () => {
             </XStack>
           </CentrumYStack>
         </YStack>
-        <ProgressLine />
+        <ProgressLine level={level}/>
         <AchievementList />
       </YStack>
     </SafeAreaView>
@@ -87,5 +89,10 @@ const Crown = styled(XStack, {
   borderColor: '#fff',
   borderRadius: 25,
 })
+
+const CookieText = styled(Text, {
+  color: "#333F48",
+  fontSize: 14,
+});
 
 export default ProfileScreen;

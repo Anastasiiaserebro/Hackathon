@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import { Paragraph,YStack, XStack, Circle,  styled, Image} from 'tamagui'
 
 import Diamond from '../assets/diamond.svg';
@@ -14,16 +14,16 @@ type AchievementProps = {
 
 export const Achievement:React.FC<AchievementProps> = ({ achievement }) => {
 
-  const {title, subTitle, id, SVG} = achievement
+  const {title, subTitle, SVG} = achievement
 
   return (
     <XStack space={10} alignItems='center'>
         <Circle  backgroundColor='#78D498' size={50}>
-          <Diamond />
+          <SVG/>
         </Circle>
         <TextContainer>
-          <StyledParagraph fontSize={16}>{title}</StyledParagraph>
-          <StyledParagraph color='#949494'>{subTitle}</StyledParagraph>
+          <Paragraph fontSize={16}>{title}</Paragraph>
+          <Paragraph color='#949494'>{subTitle}</Paragraph>
         </TextContainer>
       </XStack>
 
@@ -32,10 +32,4 @@ export const Achievement:React.FC<AchievementProps> = ({ achievement }) => {
 
 const TextContainer = styled(YStack,{
   flex:1,
-  width: '100%',
-})
-
-const StyledParagraph = styled(Paragraph,{
-  whiteSpace:'nowrap',
-  textOverflow:'ellipsis',
 })
