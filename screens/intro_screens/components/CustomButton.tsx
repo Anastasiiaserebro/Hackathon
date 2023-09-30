@@ -74,7 +74,7 @@ const CustomButton = ({ flatListRef, flatListIndex, dataLength, x }: Props) => {
     const backgroundColor = interpolateColor(
       x.value,
       [0, SCREEN_WIDTH, 2 * SCREEN_WIDTH],
-      ["#005b4f", "#1e2169", "#F15937"],
+      ["#B1C288", "#EBB6A8", "#A8C2DC"],
     );
 
     return {
@@ -113,7 +113,7 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#1e2169",
+    backgroundColor: "yellow",
     padding: 10,
     borderRadius: 100,
     justifyContent: "center",

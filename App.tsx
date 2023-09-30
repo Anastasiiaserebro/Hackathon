@@ -12,6 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import OnboardingScreen from "./screens/intro_screens/OnboardingScreen";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
+import registerNNPushToken from "native-notify";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -106,7 +107,7 @@ function InitialNavigator() {
   return (
     <RootStack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="MainApp"
+      initialRouteName="Onboarding"
     >
       <RootStack.Screen name="Onboarding" component={OnboardingScreen} />
       <RootStack.Screen name="Login" component={View} />
@@ -123,6 +124,8 @@ export const API = axios.create({
 });
 
 export default function App() {
+  registerNNPushToken(12815, "ssq0xHjzNPqeyT9i0bPRDb");
+
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
     InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),

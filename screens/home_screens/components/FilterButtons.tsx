@@ -88,7 +88,7 @@ export const FilterButtons: React.FC<FilterButtonsProps> = ({
             )
           }
         >
-          Сначала новые
+          {sortButton === "ABC" ? "Сначала старые" : "Сначала новые"}
         </Button>
       </XStack>
     </YStack>
