@@ -52,7 +52,7 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
       borderRadius={15}
       onPress={() => getId(id)}
     >
-      <XStack>
+      <XStack >
         <LineView variableColor={status as StatusType}></LineView>
         <YStack space={8}>
           <XStack space={30} alignItems="center">
@@ -60,7 +60,7 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
             {status === "new" && <Cookie count="+25" />}
           </XStack>
           <Category>{category}</Category>
-          <Text>{title}</Text>
+          <Text  width={220} >{title}</Text>
           <XStack space={5}>
             <DateText variableColor={status as StatusType}>
               {statusDate}
@@ -69,7 +69,7 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
           </XStack>
         </YStack>
       </XStack>
-      <YStack justifyContent="flex-start" height="100%">
+      <YStack justifyContent="flex-start" height="100%" >
         <Text>{formatterDate}</Text>
       </YStack>
     </ListItem>

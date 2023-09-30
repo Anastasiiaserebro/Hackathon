@@ -15,6 +15,10 @@ type DetailsScreenProps = NativeStackScreenProps<
   "DocumentDetails"
 >;
 
+export type DialogProps = {
+  docId : string;
+}
+
 const timelineData = [
   {
     id: 1,
@@ -30,7 +34,8 @@ const timelineData = [
   },
 ];
 
-export function DetailsScreen() {
+export function DetailsScreen({ navigation, route}: DetailsScreenProps) {
+  const docId = route.params.id;
   const [documentOpeneded, setDocumentOpened] = useState(false);
 
   return (
@@ -91,10 +96,10 @@ export function DetailsScreen() {
       </YStack>
       <XStack> 
         <PortalProvider>
-            <DialogSign/>
+            <DialogSign docId={docId}/>
         </PortalProvider>
         <PortalProvider>
-            <DialogReject/>
+            <DialogReject  docId={docId}/>
         </PortalProvider>
       </XStack>
     </Wrapper>
