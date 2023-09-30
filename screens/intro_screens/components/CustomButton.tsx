@@ -90,7 +90,7 @@ const CustomButton = ({ flatListRef, flatListIndex, dataLength, x }: Props) => {
             index: flatListIndex.value + 1,
           });
         } else {
-          navigation.navigate("MainApp");
+          navigation.navigate("Login");
         }
       }}
     >

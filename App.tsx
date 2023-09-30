@@ -182,7 +182,7 @@ function InitialNavigator() {
   return (
     <RootStack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="MainApp"
+      initialRouteName="Onboarding"
     >
       <RootStack.Screen name="Onboarding" component={OnboardingScreen} />
       <RootStack.Screen name="Login" component={Login} />
