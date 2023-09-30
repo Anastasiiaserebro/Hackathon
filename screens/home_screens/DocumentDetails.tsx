@@ -1,12 +1,14 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { RootStackParamList } from "../../App";
-import { Button, Text, View, XStack, YStack, styled } from "tamagui";
+import { Button, PortalProvider, Text, View, XStack, YStack, styled } from "tamagui";
 import PdfLogo from "../assets/pdf.svg";
 import Checkbox from "../assets/checkbox.svg";
 import { useState } from "react";
 import { Timeline } from "./components/Timeline";
 import { Cookie } from "../components/Cookie/Cookie";
+import DialogSign from "./components/DialogSign";
+import DialogReject from "./components/DialogReject";
 
 type DetailsScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -28,7 +30,7 @@ const timelineData = [
   },
 ];
 
-export function DetailsScreen({ navigation, route }: DetailsScreenProps) {
+export function DetailsScreen() {
   const [documentOpeneded, setDocumentOpened] = useState(false);
 
   return (
@@ -46,8 +48,7 @@ export function DetailsScreen({ navigation, route }: DetailsScreenProps) {
               Накладная на внутреннее перемещение основных средств
             </HeaderText>
           </YStack>
-
-          <Cookie count="+20" />
+          <Cookie count="+25" />
         </HeaderWrapper>
 
         <Button unstyled onPress={() => setDocumentOpened(true)}>
@@ -86,13 +87,15 @@ export function DetailsScreen({ navigation, route }: DetailsScreenProps) {
           <SubHeader>Автор</SubHeader>
           <Value>Невменько А.Г</Value>
         </YStack>
-
         <Timeline timelineData={timelineData} />
       </YStack>
-
-      <XStack space={12} alignSelf="flex-end">
-        <RejectButton unstyled>Отклонить</RejectButton>
-        <SignButton unstyled>Подписать</SignButton>
+      <XStack> 
+        <PortalProvider>
+            <DialogSign/>
+        </PortalProvider>
+        <PortalProvider>
+            <DialogReject/>
+        </PortalProvider>
       </XStack>
     </Wrapper>
   );
@@ -109,11 +112,6 @@ const HeaderWrapper = styled(View, {
   justifyContent: "space-between",
   alignItems: "flex-start",
   gap: 16,
-});
-
-const CookieText = styled(Text, {
-  color: "#333F48",
-  fontSize: 14,
 });
 
 const HeaderText = styled(Text, {

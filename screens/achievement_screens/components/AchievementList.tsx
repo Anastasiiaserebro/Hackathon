@@ -16,7 +16,7 @@ export const AchievementList = () => {
   const { data: achievement, isLoading } = useQuery({
     queryKey: ["achievements"],
     queryFn: () =>
-      API.get('get_achievements/1').then((res) => res) as unknown as AchievementType[],
+      API.get('get_achievements/1').then((res) => res.data) as unknown as AchievementType[],
   });
 
   console.log(achievement)
