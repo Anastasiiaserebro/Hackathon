@@ -1,8 +1,8 @@
-import { DocsType } from "./home_screens/components/DocList";
+import { DocsType } from "../types";
 
-export const getDocCount = (docs: DocsType[]) => {
+export const getDocCount = (docs: DocsType[] | undefined) => {
   const counts = { all: 0, toAgree: 0, archive: 0 };
-  docs.forEach((doc) => {
+  docs?.forEach((doc) => {
     if (doc.status === "new") {
       counts.toAgree = counts.toAgree + 1;
     } else {
@@ -10,6 +10,6 @@ export const getDocCount = (docs: DocsType[]) => {
     }
   });
 
-  counts.all = docs.length;
+  counts.all = docs?.length ?? 0;
   return counts;
 };
