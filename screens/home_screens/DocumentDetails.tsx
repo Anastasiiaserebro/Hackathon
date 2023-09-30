@@ -58,7 +58,7 @@ export function DetailsScreen({ navigation, route }: DetailsScreenProps) {
             </HeaderText>
           </YStack>
 
-          <XStack alignItems="center" justifyContent="center" >
+          <XStack alignItems="center" justifyContent="center">
             <Image source={cookie} maxWidth={32} maxHeight={32} />
             <CookieText>+20</CookieText>
           </XStack>
@@ -103,6 +103,11 @@ export function DetailsScreen({ navigation, route }: DetailsScreenProps) {
 
         <Timeline timelineData={timelineData} />
       </YStack>
+
+      <XStack space={12} alignSelf="flex-end">
+        <RejectButton unstyled>Отклонить</RejectButton>
+        <SignButton unstyled>Подписать</SignButton>
+      </XStack>
     </Wrapper>
   );
 }
@@ -113,7 +118,6 @@ const Wrapper = styled(View, {
 });
 
 const HeaderWrapper = styled(View, {
-  // width: "100%",
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
@@ -124,6 +128,7 @@ const HeaderWrapper = styled(View, {
 const CookieText = styled(Text, {
   color: "#333F48",
   fontSize: 14,
+  marginTop: -6,
 });
 
 const HeaderText = styled(Text, {
@@ -147,4 +152,21 @@ const Value = styled(Text, {
   fontSize: 14,
   fontWeight: "600",
   color: "#333F48",
+});
+
+const RejectButton = styled(Button, {
+  color: "#DB0D60",
+  padding: 13,
+  paddingLeft: 20,
+  paddingRight: 20,
+  borderRadius: 10,
+});
+
+const SignButton = styled(Button, {
+  padding: 13,
+  paddingLeft: 20,
+  paddingRight: 20,
+  color: "white",
+  backgroundColor: "#007AFF",
+  borderRadius: 10,
 });

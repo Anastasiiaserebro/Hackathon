@@ -19,7 +19,7 @@ export const Timeline = ({ timelineData }: TimelineProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <>
+    <YStack space={12}>
       <Button unstyled onPress={() => setIsCollapsed((c) => !c)}>
         <XStack space="$2">
           <LinkText>Маршрут согласования</LinkText>
@@ -55,7 +55,7 @@ export const Timeline = ({ timelineData }: TimelineProps) => {
           </XStack>
         </YStack>
       </Collapsible>
-    </>
+    </YStack>
   );
 };
 
