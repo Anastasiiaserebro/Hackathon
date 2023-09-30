@@ -8,10 +8,9 @@ type HeaderProps = {
 
 export const Header:React.FC<HeaderProps> = ({ onSearch }) => {
     return(
-        <XStack width={95} padding={16} space={2} alignItems='center'>
-            <Avatar circular size="$3"  display='flex' justifyContent='center'
-        alignItems='center'>
-                <Avatar.Image src={avatar} height='100%' width='auto'/>
+        <XStack  padding={16} space={2} alignItems='center'>
+            <Avatar circular size="$3">
+                <Avatar.Image src={avatar} resizeMode="contain" flex={1}/>
                 <Avatar.Fallback bc="#F49300" />
               </Avatar>
             <Input size="$4" marginLeft={15} borderColor='#fff' backgroundColor='#7676801F' width={220} fontWeight='100' placeholder="Найти..." color='#000' onChangeText={onSearch}/>

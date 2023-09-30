@@ -20,8 +20,8 @@ const ProfileScreen = () => {
           <Text fontSize={45} fontWeight='700'>Профиль</Text>
           <CentrumYStack>
             <CentrumYStack>
-              <Avatar circular size="$10" position='relative'  display='flex' justifyContent='center' alignItems='center'>
-                <Avatar.Image src={avatar} height='100%' width='auto'/>
+              <Avatar circular size="$10" position='relative' backgroundColor='#F5E5AE'>
+                <Avatar.Image src={avatar} resizeMode="contain" flex={1}/>
                 <Avatar.Fallback bc="#F49300" />
               </Avatar>
               <Level>

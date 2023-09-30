@@ -1,10 +1,5 @@
 
-import { Paragraph,YStack, XStack, Circle,  styled, Image} from 'tamagui'
-
-import Diamond from '../assets/diamond.svg';
-import Timer from '../assets/timer.svg';
-import Book from '../assets/book.svg';
-import Approve from '../assets/approve.svg';
+import { Paragraph,YStack, XStack, Circle,  styled, Image} from 'tamagui';
 
 import { AchievementType } from './AchievementList';
 

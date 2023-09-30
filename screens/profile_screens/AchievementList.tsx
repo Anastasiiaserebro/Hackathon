@@ -41,13 +41,13 @@ const achievement:AchievementType[] = [
 export function AchievementList() {
   return (
     <SafeAreaView >
-    <ScrollView paddingBottom={250} flex={1}>
-      <YStack space marginVertical={20} >
-        {achievement.map(el => (
-           <Achievement key={el.id} achievement={el}/>
-        ))}
-      </YStack>
-    </ScrollView>
+      <ScrollView paddingBottom={250} flex={1}>
+        <YStack space marginVertical={20} >
+          {achievement.map(el => (
+            <Achievement key={el.id} achievement={el}/>
+          ))}
+        </YStack>
+      </ScrollView>
     </SafeAreaView>
   )
 }
