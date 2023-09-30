@@ -8,15 +8,14 @@ import { DocList } from "./components/DocList";
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Home">;
 
 export function HomeScreen({ navigation }: HomeScreenProps) {
-
-  const getId = (id:string) => {
-    navigation.navigate("DocumentDetails", { id })
-  }
+  const getId = (id: string) => {
+    navigation.navigate("DocumentDetails", { id });
+  };
 
   return (
     <SafeAreaView>
-      <View backgroundColor='#fff' >
-        <DocList getId={getId}/>
+      <View backgroundColor="#fff">
+        <DocList getId={getId} />
       </View>
     </SafeAreaView>
   );

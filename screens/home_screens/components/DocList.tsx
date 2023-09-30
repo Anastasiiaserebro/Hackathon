@@ -62,7 +62,7 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
   });
 
   const searchResults = sortedList.filter((item) =>
-    item.title.toLowerCase().includes(searchValue.toLowerCase())
+    item.title.toLowerCase().includes(searchValue.toLowerCase()),
   );
 
   const onSearch = (text: string) => {

@@ -14,13 +14,12 @@ const ProfileScreen = () => {
   return (
     <SafeAreaView>
       <YStack backgroundColor="#fff" height="120%" padding={28} space={40}>
-        <ProfileHeader level={level} docCount={docCount}/>
+        <ProfileHeader level={level} docCount={docCount} />
         <ProgressLine level={level} />
         <AchievementList />
       </YStack>
     </SafeAreaView>
   );
 };
-
 
 export default ProfileScreen;

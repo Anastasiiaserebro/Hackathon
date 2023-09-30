@@ -10,7 +10,6 @@ import ProfileScreen from "./screens/profile_screens/Profile";
 import { AchievementsScreen } from "./screens/achievement_screens/Achievements";
 import { Ionicons } from "@expo/vector-icons";
 
-
 export type RootStackParamList = {
   Home: undefined;
   DocumentDetails: { id: string };
@@ -107,10 +106,10 @@ export default function App() {
   }
 
   return (
-    <TamaguiProvider config={config} defaultTheme="light" >
+    <TamaguiProvider config={config} defaultTheme="light">
       <NavigationContainer>
         <TabNavigator />
       </NavigationContainer>
-    </TamaguiProvider>  
+    </TamaguiProvider>
   );
 }
