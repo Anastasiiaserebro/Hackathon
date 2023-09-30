@@ -25,7 +25,7 @@ const Dot = ({ index, x }: Props) => {
         (index + 1) * SCREEN_WIDTH,
       ],
       [10, 20, 10],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
 
     const opacityAnimation = interpolate(
@@ -36,7 +36,7 @@ const Dot = ({ index, x }: Props) => {
         (index + 1) * SCREEN_WIDTH,
       ],
       [0.5, 1, 0.5],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
     return {
       width: widthAnimation,
@@ -48,7 +48,7 @@ const Dot = ({ index, x }: Props) => {
     const backgroundColor = interpolateColor(
       x.value,
       [0, SCREEN_WIDTH, 2 * SCREEN_WIDTH],
-      ["#005b4f", "#1e2169", "#F15937"]
+      ["#005b4f", "#1e2169", "#F15937"],
     );
 
     return {

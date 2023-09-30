@@ -1,15 +1,14 @@
-import {StyleSheet, View, FlatList, ViewToken} from 'react-native';
-import React from 'react';
+import { StyleSheet, View, FlatList, ViewToken } from "react-native";
+import React from "react";
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
   useAnimatedRef,
-} from 'react-native-reanimated';
-import CustomButton from './components/CustomButton';
-import Pagination from './components/Pagination';
-import RenderItem from './components/RenderItem';
-import data, { OnboardingData } from './data/data';
-
+} from "react-native-reanimated";
+import CustomButton from "./components/CustomButton";
+import Pagination from "./components/Pagination";
+import RenderItem from "./components/RenderItem";
+import data, { OnboardingData } from "./data/data";
 
 const OnboardingScreen = () => {
   const flatListRef = useAnimatedRef<any>();
@@ -27,7 +26,7 @@ const OnboardingScreen = () => {
   };
 
   const onScroll = useAnimatedScrollHandler({
-    onScroll: event => {
+    onScroll: (event) => {
       x.value = event.contentOffset.x;
     },
   });
@@ -38,10 +37,10 @@ const OnboardingScreen = () => {
         ref={flatListRef}
         onScroll={onScroll}
         data={data}
-        renderItem={({item, index}) => {
+        renderItem={({ item, index }) => {
           return <RenderItem item={item} index={index} x={x} />;
         }}
-        keyExtractor={item => String(item.id)}
+        keyExtractor={(item) => String(item.id)}
         scrollEventThrottle={16}
         horizontal={true}
         bounces={false}
@@ -73,12 +72,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bottomContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginHorizontal: 30,
     paddingVertical: 30,
-    position: 'absolute',
+    position: "absolute",
     bottom: 20,
     left: 0,
     right: 0,

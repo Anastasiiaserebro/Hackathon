@@ -27,7 +27,7 @@ const RenderItem = ({ index, x, item }: Props) => {
         (index + 1) * SCREEN_WIDTH,
       ],
       [200, 0, -200],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
 
     return {
@@ -44,7 +44,7 @@ const RenderItem = ({ index, x, item }: Props) => {
         (index + 1) * SCREEN_WIDTH,
       ],
       [1, 4, 4],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
 
     return {

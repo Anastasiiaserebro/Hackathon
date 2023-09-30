@@ -1,15 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { RootStackParamList } from "../../App";
-import {
-  Button,
-  Text,
-  View,
-  XStack,
-  YStack,
-  Image,
-  styled,
-} from "tamagui";
+import { Button, Text, View, XStack, YStack, Image, styled } from "tamagui";
 import PdfLogo from "../assets/pdf.svg";
 import Checkbox from "../assets/checkbox.svg";
 import { useState } from "react";
@@ -41,7 +33,7 @@ export function DetailsScreen({ navigation, route }: DetailsScreenProps) {
   const [documentOpeneded, setDocumentOpened] = useState(false);
 
   return (
-    <Wrapper flex={1} backgroundColor='#fff'>
+    <Wrapper flex={1} backgroundColor="#fff">
       <YStack
         flex={1}
         space="$5"
@@ -56,7 +48,7 @@ export function DetailsScreen({ navigation, route }: DetailsScreenProps) {
             </HeaderText>
           </YStack>
 
-          <Cookie count='+20'/>
+          <Cookie count="+20" />
         </HeaderWrapper>
 
         <Button unstyled onPress={() => setDocumentOpened(true)}>
