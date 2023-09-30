@@ -6,22 +6,20 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeScreen } from "./screens/home_screens/Home";
 import { DetailsScreen } from "./screens/home_screens/DocumentDetails";
-import ProfileScreen from "./screens/profile_screens/Profile";
+import { ProfileScreen } from "./screens/profile_screens/Profile";
 import { AchievementsScreen } from "./screens/achievement_screens/Achievements";
-import { Ionicons } from "@expo/vector-icons";
 import OnboardingScreen from "./screens/intro_screens/OnboardingScreen";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
 import registerNNPushToken from "native-notify";
 
-import DelaIcon from "./assets/dela.svg";
-import ProfileIcon from "./assets/profile.svg";
-import AchievementsIcon from "./assets/achievements.svg";
 import { ClipPath, Defs, G, Path, Rect, Svg } from "react-native-svg";
+import { Shop } from "./screens/achievement_screens/Shop";
 
 export type RootStackParamList = {
   Home: undefined;
   DocumentDetails: { id: string };
+  Shop: undefined;
   Profile: undefined;
   Achievements: undefined;
   Login: undefined;
@@ -66,8 +64,20 @@ function ProfileStackNavigator() {
 
 function AchievementsStackNavigator() {
   return (
-    <RootStack.Navigator screenOptions={{ headerShown: false }}>
+    <RootStack.Navigator
+      initialRouteName="Achievements"
+      screenOptions={{ headerShown: false }}
+    >
       <RootStack.Screen name="Achievements" component={AchievementsScreen} />
+      <RootStack.Screen
+        name="Shop"
+        component={Shop}
+        options={{
+          headerBackTitle: "Назад",
+          headerTitle: "",
+          animation: "slide_from_right",
+        }}
+      />
     </RootStack.Navigator>
   );
 }

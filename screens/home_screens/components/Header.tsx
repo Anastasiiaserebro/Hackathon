@@ -13,17 +13,16 @@ export const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         <Image
           source={avatar}
           resizeMode="contain"
-          // flex={1}
           maxWidth={24}
           maxHeight={24}
         />
       </CustomAvatar>
       <Input
         size="$4"
-        marginLeft={15}
+        marginLeft={25}
         borderColor="#fff"
         backgroundColor="#7676801F"
-        width={220}
+        width={225}
         fontWeight="100"
         placeholder="Найти..."
         color="#000"
