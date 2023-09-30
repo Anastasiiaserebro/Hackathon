@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Avatar, Text, styled, XStack, YStack, Image } from "tamagui";
+import { Avatar, Text, styled, XStack, YStack, Image, View } from "tamagui";
 import { getDocCount } from "../getDocCount";
 import { ProgressLine } from "./ProgressLine";
 import { AchievementList } from "./AchievementList";
@@ -29,15 +29,9 @@ const ProfileScreen = () => {
           </Text>
           <CentrumYStack>
             <CentrumYStack>
-              <Avatar
-                circular
-                size="$10"
-                position="relative"
-                backgroundColor="#F5E5AE"
-              >
-                <Avatar.Image src={avatar} resizeMode="contain" flex={1} />
-                <Avatar.Fallback bc="#F49300" />
-              </Avatar>
+              <CustomAvatar>
+                <Image source={avatar} resizeMode="contain" flex={1} />
+              </CustomAvatar>
               <Level>
                 <Crown>
                   <Text fontSize={20}>👑</Text>
@@ -111,6 +105,16 @@ const Crown = styled(XStack, {
 const CookieText = styled(Text, {
   color: "#333F48",
   fontSize: 14,
+});
+
+const CustomAvatar = styled(View, {
+  width: 100,
+  height: 100,
+  borderRadius: 9999,
+  backgroundColor: "#F5E5AE",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });
 
 export default ProfileScreen;
