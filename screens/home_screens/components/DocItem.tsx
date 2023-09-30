@@ -7,11 +7,8 @@ type DocItemProps = {
   getId: (id: string) => void;
 };
 
-import Flame from '../../assets/flame.svg'
+import Flame from "../../assets/flame.svg";
 import { Cookie } from "../../Cookie/Cookie";
-
-export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
-  const { title, category, id, date, status, statusDate } = doc;
 
 const getStatusStyle = (status: StatusType) => {
   if (status === "accept") {
@@ -21,7 +18,6 @@ const getStatusStyle = (status: StatusType) => {
   }
   return "#949494";
 };
-
 const formatter = new Intl.DateTimeFormat("ru");
 
 export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
@@ -61,14 +57,16 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
         <YStack space={8}>
           <XStack space={30} alignItems="center">
             <Text>{id}</Text>
-            {status === 'new' &&  <Cookie count='+25'/>} 
+            {status === "new" && <Cookie count="+25" />}
           </XStack>
           <Text>{category}</Text>
           <Text>{title}</Text>
           <XStack space={5}>
-            <DateText variableColor={status as StatusType}>{statusDate}</DateText>
-           {status === 'new' && <Flame />}
-          </XStack> 
+            <DateText variableColor={status as StatusType}>
+              {statusDate}
+            </DateText>
+            {status === "new" && <Flame />}
+          </XStack>
         </YStack>
       </XStack>
       <YStack justifyContent="flex-start" height="100%">
