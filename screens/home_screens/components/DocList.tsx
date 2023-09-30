@@ -6,6 +6,7 @@ import { Header } from "./Header";
 import { useQuery } from "@tanstack/react-query";
 import { API } from "../../../App";
 import { DocsType } from "../../../types";
+import { SafeAreaView } from 'react-native';
 
 export const filterOptions = {
   all: "Всего",
@@ -92,13 +93,15 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
         sortButton={sortButton}
         sortFn={sortFn}
       />
-      <ScrollView>
-        <YStack flex={1} space={16} padding={16}>
-          {searchResults?.map((doc) => (
-            <DocItem key={doc.id} doc={doc} getId={getId} />
-          ))}
-        </YStack>
-      </ScrollView>
+      <SafeAreaView>
+          <ScrollView paddingBottom={600} flex={1}>
+            <YStack flex={1} space={16} padding={16}>
+              {searchResults?.map((doc) => (
+                <DocItem key={doc.id} doc={doc} getId={getId} />
+              ))}
+            </YStack>
+          </ScrollView>
+      </SafeAreaView>
     </YStack>
   );
 };
