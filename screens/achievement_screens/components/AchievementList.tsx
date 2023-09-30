@@ -21,7 +21,7 @@ const progressItems: ProgressType[] = [
     level: "Золотой уровень",
     id: "1",
     percentage:1,
-    SVG: require("../assets/crow.svg").default,
+    SVG: require("../../assets/crown.svg").default,
   },
   {
     title: "Начинающий рукописец",
@@ -29,7 +29,7 @@ const progressItems: ProgressType[] = [
     level: "Бронзовый уровень",
     id: "2",
     percentage:30,
-    SVG: require("../assets/stats.svg").default,
+    SVG: require("../../assets/stats.svg").default,
   },
   // {
   //   title: "Быстрый старт",
