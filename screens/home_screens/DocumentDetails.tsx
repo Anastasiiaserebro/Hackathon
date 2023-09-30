@@ -10,10 +10,14 @@ import { Cookie } from "../components/Cookie/Cookie";
 import DialogSign from "./components/DialogSign";
 import DialogReject from "./components/DialogReject";
 
-// type DetailsScreenProps = NativeStackScreenProps<
-//   RootStackParamList,
-//   "DocumentDetails"
-// >;
+type DetailsScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+  "DocumentDetails"
+>;
+
+export type DialogProps = {
+  docId : string;
+}
 
 const timelineData = [
   {
@@ -30,7 +34,8 @@ const timelineData = [
   },
 ];
 
-export function DetailsScreen() {
+export function DetailsScreen({ navigation, route}: DetailsScreenProps) {
+  const docId = route.params.id;
   const [documentOpeneded, setDocumentOpened] = useState(false);
 
   return (
@@ -91,10 +96,10 @@ export function DetailsScreen() {
       </YStack>
       <XStack> 
         <PortalProvider>
-            <DialogSign/>
+            <DialogSign docId={docId}/>
         </PortalProvider>
         <PortalProvider>
-            <DialogReject/>
+            <DialogReject  docId={docId}/>
         </PortalProvider>
       </XStack>
     </Wrapper>

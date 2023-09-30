@@ -1,12 +1,11 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, {useState} from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
-import { API, RootStackParamList } from '../../../App';
+import { API, RootStackParamList, queryClient } from '../../../App';
 import { useMutation } from '@tanstack/react-query';
-import { Spinner } from 'tamagui';
+import { DialogProps } from "../DocumentDetails";
 
-
-const DialogSign= () => {
+const DialogSign: React.FC<DialogProps>= ({docId}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -17,8 +16,9 @@ const DialogSign= () => {
   };
 
   const { mutate } = useMutation({
-    mutationKey: ["sign"],
-    mutationFn: () => API.post('sign', { uid: 1, docId: "94823123", status: "accept"}),
+    mutationKey: ["sign/accept"],
+    onSuccess: () => {queryClient.invalidateQueries({queryKey:['docs']})},
+    mutationFn: () => API.post('sign', { uid: 1, docId:docId, status: "accept"} ),
   });
 
   return (

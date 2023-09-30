@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { type RootStackParamList } from "../../App";
-import { View } from "tamagui";
+import { XStack } from "tamagui";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DocList } from "./components/DocList";
 
@@ -13,10 +13,10 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View flex={1} backgroundColor="#fff">
+    <SafeAreaView style={{ flex: 1, backgroundColor:"#fff" }} >
+      <XStack flex={1} backgroundColor="#fff" paddingBottom={230}>
         <DocList getId={getId} />
-      </View>
+      </XStack>
     </SafeAreaView>
   );
 }
