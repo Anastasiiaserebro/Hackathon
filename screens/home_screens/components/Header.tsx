@@ -1,4 +1,4 @@
-import { Avatar, Input, XStack, Button } from "tamagui";
+import { Avatar, Input, XStack, Button, styled, View, Image } from "tamagui";
 import { Bell, Menu } from "@tamagui/lucide-icons";
 import avatar from "../../assets/avatar.png";
 
@@ -8,11 +8,15 @@ type HeaderProps = {
 
 export const Header: React.FC<HeaderProps> = ({ onSearch }) => {
   return (
-    <XStack padding={16} space={2} alignItems="center" justifyContent="flex-start">
-      <Avatar circular size="$3">
-        <Avatar.Image src={avatar} resizeMode="contain" flex={1} />
-        <Avatar.Fallback bc="#F49300" />
-      </Avatar>
+    <XStack padding={16} space={2} alignItems="center">
+      <CustomAvatar>
+        <Image
+          source={avatar}
+          resizeMode="contain"
+          maxWidth={24}
+          maxHeight={24}
+        />
+      </CustomAvatar>
       <Input
         size="$4"
         marginLeft={25}
@@ -39,3 +43,13 @@ export const Header: React.FC<HeaderProps> = ({ onSearch }) => {
     </XStack>
   );
 };
+
+const CustomAvatar = styled(View, {
+  width: 36,
+  height: 36,
+  borderRadius: 9999,
+  backgroundColor: "#F5E5AE",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+});

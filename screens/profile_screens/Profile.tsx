@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { YStack } from "tamagui";
 import { getDocCount } from "../getDocCount";
-import { docs } from "../docs";
 import { ProgressLine } from "./ProgressLine";
 import { AchievementList } from "./AchievementList";
 import { ProfileHeader } from "./ProfileHeader";
 
+import { useQuery } from "@tanstack/react-query";
+import { API } from "../../App";
+import { DocsType } from "../../types";
+
 export const ProfileScreen = () => {
   const [level, setLevel] = useState<number>(4);
+  const { data: docs } = useQuery({
+    queryKey: ["docs"],
+    queryFn: () =>
+      API.get("docs").then((res) => res.data) as unknown as DocsType[],
+  });
   const docCount = getDocCount(docs);
 
   return (

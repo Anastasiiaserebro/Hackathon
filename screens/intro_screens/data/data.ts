@@ -2,7 +2,7 @@ import { AnimationObject } from "lottie-react-native";
 
 export interface OnboardingData {
   id: number;
-  animation: AnimationObject;
+  animation: any;
   text: string;
   textColor: string;
   backgroundColor: string;
@@ -11,24 +11,24 @@ export interface OnboardingData {
 const data: OnboardingData[] = [
   {
     id: 1,
-    animation: require("../assets/animations/Lottie1.json"),
-    text: "Lorem Ipsum dolor sit amet",
-    textColor: "#005b4f",
-    backgroundColor: "#ffa3ce",
+    animation: require("../assets/images/cat1.png"),
+    text: "Инструмент согласований теперь в твоем мобильном! Установи приложение и больше не пропускай важные уведомления о согласовании документов!",
+    textColor: "white",
+    backgroundColor: "#A8C2DC",
   },
   {
     id: 2,
-    animation: require("../assets//animations/Lottie2.json"),
-    text: "Lorem Ipsum dolor sit amet",
-    textColor: "#1e2169",
-    backgroundColor: "#bae4fd",
+    animation: require("../assets/images/cat2.png"),
+    text: "Теперь получить доступ к инструменту согласований документов можно быстро и легко",
+    textColor: "white",
+    backgroundColor: "#B1C288",
   },
   {
     id: 3,
-    animation: require("../assets//animations/Lottie3.json"),
-    text: "Lorem Ipsum dolor sit amet",
-    textColor: "#F15937",
-    backgroundColor: "#faeb8a",
+    animation: require("../assets/images/cat3.png"),
+    text: "За каждое выполненное действие добавлена возможность получать новые достижения и соревноваться с сотрудниками за звания",
+    textColor: "#333F48",
+    backgroundColor: "#EBB6A8",
   },
 ];
 

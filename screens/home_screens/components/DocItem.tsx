@@ -56,10 +56,10 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
         <LineView variableColor={status as StatusType}></LineView>
         <YStack space={8}>
           <XStack space={30} alignItems="center">
-            <Text>{id}</Text>
+            <PersonnelNumber>{id}</PersonnelNumber>
             {status === "new" && <Cookie count="+25" />}
           </XStack>
-          <Text>{category}</Text>
+          <Category>{category}</Category>
           <Text>{title}</Text>
           <XStack space={5}>
             <DateText variableColor={status as StatusType}>
@@ -75,3 +75,14 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
     </ListItem>
   );
 };
+
+const PersonnelNumber = styled(Text, {
+  fontSize: 12,
+  color: "#949494",
+});
+
+const Category = styled(Text, {
+  fontSize: 12,
+  color: "#333F48",
+  fontWeight: "600",
+});

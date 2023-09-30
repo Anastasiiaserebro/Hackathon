@@ -74,7 +74,7 @@ const CustomButton = ({ flatListRef, flatListIndex, dataLength, x }: Props) => {
     const backgroundColor = interpolateColor(
       x.value,
       [0, SCREEN_WIDTH, 2 * SCREEN_WIDTH],
-      ["#005b4f", "#1e2169", "#F15937"],
+      ["#93AB59", "#D79E96", "#86ACD1"],
     );
 
     return {
@@ -98,7 +98,7 @@ const CustomButton = ({ flatListRef, flatListIndex, dataLength, x }: Props) => {
         style={[styles.container, buttonAnimationStyle, animatedColor]}
       >
         <Animated.Text style={[styles.textButton, textAnimationStyle]}>
-          Get Started
+          Начать
         </Animated.Text>
         <Animated.Image
           source={require("../assets/images/ArrowIcon.png")}
@@ -113,7 +113,7 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#1e2169",
+    backgroundColor: "yellow",
     padding: 10,
     borderRadius: 100,
     justifyContent: "center",

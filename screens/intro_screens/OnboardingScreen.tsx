@@ -8,7 +8,7 @@ import Animated, {
 import CustomButton from "./components/CustomButton";
 import Pagination from "./components/Pagination";
 import RenderItem from "./components/RenderItem";
-import data, { OnboardingData } from "./data/data";
+import data from "./data/data";
 
 const OnboardingScreen = () => {
   const flatListRef = useAnimatedRef<any>();
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     paddingVertical: 30,
     position: "absolute",
-    bottom: 20,
+    bottom: 0,
     left: 0,
     right: 0,
   },
