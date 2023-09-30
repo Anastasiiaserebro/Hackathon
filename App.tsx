@@ -15,6 +15,8 @@ import registerNNPushToken from "native-notify";
 
 import { ClipPath, Defs, G, Path, Rect, Svg } from "react-native-svg";
 import { Shop } from "./screens/achievement_screens/Shop";
+import Login from "./screens/login_screens/Login";
+
 
 export type RootStackParamList = {
   Home: undefined;
@@ -177,11 +179,10 @@ function InitialNavigator() {
   return (
     <RootStack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="MainApp"
+      initialRouteName="Login"
     >
       <RootStack.Screen name="Onboarding" component={OnboardingScreen} />
-      <RootStack.Screen name="Login" component={View} />
-      <RootStack.Screen name="SignIn" component={View} />
+      <RootStack.Screen name="Login" component={Login} />
       <RootStack.Screen name="MainApp" component={TabNavigator} />
     </RootStack.Navigator>
   );
@@ -190,7 +191,7 @@ function InitialNavigator() {
 const queryClient = new QueryClient();
 
 export const API = axios.create({
-  baseURL: "http://158.160.3.183:5000/",
+  baseURL: "http://158.160.31.243:5000/",
 });
 
 export default function App() {

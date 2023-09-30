@@ -3,9 +3,12 @@ import { Avatar, Text, styled, XStack, YStack, View, Image } from "tamagui";
 
 import avatar from "../assets/avatar-1.png";
 import { Cookie } from "../components/Cookie/Cookie";
+import { useQuery } from "@tanstack/react-query";
+import { API } from "../../App";
+import { User } from "../../types";
 
 type ProfileHeaderProps = {
-  level: number;
+  level: number | undefined;
   docCount: {
     all: number;
     toAgree: number;
@@ -17,6 +20,12 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   level,
   docCount,
 }) => {
+  const { data: user } = useQuery({
+    queryKey: ["user"],
+    queryFn: () =>
+      API.get("/get_user/1").then((res) => res.data) as unknown as User,
+  });
+
   return (
     <YStack space={30}>
       <Text fontSize={45} fontWeight="700">
@@ -34,8 +43,10 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             <Text fontSize={20}>{level}</Text>
           </Level>
           <Cookie count="250" />
-          <Text fontSize={20}>Имя Фамилия</Text>
-          <Text fontSize={20}>Должность</Text>
+          <Text fontSize={20}>
+            {user?.name} {user?.surname}
+          </Text>
+          <Text fontSize={20}>{user?.job}</Text>
         </CentrumYStack>
         <XStack
           space={0}
@@ -44,18 +55,18 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           justifyContent="center"
         >
           <YStack alignItems="center" space={3} width="33%">
-            <StyledText>{docCount.all}</StyledText>
-            <Text color="#333F48">Всего</Text>
+            <StyledText>{user?.new}</StyledText>
+            <Text color="#333F48">В работе</Text>
           </YStack>
           <YStack alignItems="center" space={3} width="33%">
-            <StyledText>{docCount.toAgree}</StyledText>
+            <StyledText>{user?.accept}</StyledText>
             <Text color="#333F48" whiteSpace="nowrap">
-              Согласовать
+              Согласовано
             </Text>
           </YStack>
           <YStack alignItems="center" space={3} width="33%">
-            <StyledText>{docCount.archive}</StyledText>
-            <Text color="#333F48">Архив</Text>
+            <StyledText>{user?.reject}</StyledText>
+            <Text color="#333F48">Отклонено</Text>
           </YStack>
         </XStack>
       </CentrumYStack>

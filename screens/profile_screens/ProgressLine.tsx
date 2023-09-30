@@ -10,7 +10,7 @@ import {
 } from "tamagui";
 
 type ProgressLineProps = {
-  level: number;
+  level: number | undefined;
 };
 
 export const ProgressLine: React.FC<ProgressLineProps> = ({ level }) => {

@@ -8,10 +8,16 @@ import { ProfileHeader } from "./ProfileHeader";
 
 import { useQuery } from "@tanstack/react-query";
 import { API } from "../../App";
-import { DocsType } from "../../types";
+import { DocsType, User } from "../../types";
 
 export const ProfileScreen = () => {
-  const [level, setLevel] = useState<number>(4);
+  const { data: user } = useQuery({
+    queryKey: ["user"],
+    queryFn: () =>
+      API.get("/get_user/1").then((res) => res.data) as unknown as User,
+  });
+
+  const [level, setLevel] = useState<number>(2);
   const { data: docs } = useQuery({
     queryKey: ["docs"],
     queryFn: () =>
@@ -22,8 +28,8 @@ export const ProfileScreen = () => {
   return (
     <SafeAreaView>
       <YStack backgroundColor="#fff" height="120%" padding={28} space={40}>
-        <ProfileHeader level={level} docCount={docCount} />
-        <ProgressLine level={level} />
+        <ProfileHeader level={user?.lvl} docCount={docCount} />
+        <ProgressLine level={user?.lvl} />
         <AchievementList />
       </YStack>
     </SafeAreaView>

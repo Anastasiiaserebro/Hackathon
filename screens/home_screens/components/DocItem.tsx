@@ -57,7 +57,7 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
         <YStack space={8}>
           <XStack space={30} alignItems="center">
             <PersonnelNumber>{id}</PersonnelNumber>
-            {status === "new" && <Cookie count="+25" />}
+            {status === "new" && <Cookie count="+500" />}
           </XStack>
           <Category>{category}</Category>
           <Text>{title}</Text>
