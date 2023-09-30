@@ -15,6 +15,7 @@ import Checkbox from "../assets/checkbox.svg";
 import { useState } from "react";
 import cookie from "../assets/cookie.png";
 import { Timeline } from "./components/Timeline";
+import { Cookie } from "../Cookie/Cookie";
 
 type DetailsScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -55,10 +56,7 @@ export function DetailsScreen({ navigation, route }: DetailsScreenProps) {
             </HeaderText>
           </YStack>
 
-          <XStack alignItems="center" justifyContent="center">
-            <Image source={cookie} maxWidth={32} maxHeight={32} />
-            <CookieText>+20</CookieText>
-          </XStack>
+          <Cookie count='+20'/>
         </HeaderWrapper>
 
         <Button unstyled onPress={() => setDocumentOpened(true)}>

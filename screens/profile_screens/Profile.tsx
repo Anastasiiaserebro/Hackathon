@@ -8,6 +8,7 @@ import { AchievementList } from "./AchievementList";
 import cookie from "../assets/cookie.png";
 
 import avatar from "../assets/avatar-1.png";
+import { Cookie } from "../Cookie/Cookie";
 
 const ProfileScreen = () => {
   const [level, setLevel] = useState<number>(4)
@@ -28,10 +29,7 @@ const ProfileScreen = () => {
                   <Crown ><Text fontSize={20}>👑</Text></Crown>
                 <Text fontSize={20}>{level}</Text>
               </Level>
-              <XStack alignItems="center" justifyContent="center">
-                <Image source={cookie} maxWidth={32} maxHeight={32} />
-              <CookieText>205</CookieText>
-               </XStack>
+              <Cookie count='250'/>
               <Text fontSize={20}>Имя Фамилия</Text>
               <Text fontSize={20}>Должность</Text>
             </CentrumYStack>
