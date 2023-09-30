@@ -2,10 +2,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { RootStackParamList } from "../../App";
 import {
-  Accordion,
   Button,
-  Paragraph,
-  Square,
   Text,
   View,
   XStack,
@@ -13,10 +10,10 @@ import {
   Image,
   styled,
 } from "tamagui";
-import PdfLogo from "./assets/pdf.svg";
-import Checkbox from "./assets/checkbox.svg";
+import PdfLogo from "../assets/pdf.svg";
+import Checkbox from "../assets/checkbox.svg";
 import { useState } from "react";
-import cookie from "./assets/cookie.png";
+import cookie from "../assets/cookie.png";
 import { Timeline } from "./components/Timeline";
 
 type DetailsScreenProps = NativeStackScreenProps<
