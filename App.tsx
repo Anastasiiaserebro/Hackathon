@@ -188,7 +188,7 @@ function InitialNavigator() {
   );
 }
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 export const API = axios.create({
   baseURL: "http://158.160.31.243:5000/",

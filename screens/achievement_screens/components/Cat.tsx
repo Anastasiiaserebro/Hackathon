@@ -15,9 +15,9 @@ export const Cat:React.FC<CatProps> = ( {money} ) => {
     return (
         <XStack justifyContent="center" space={15}>
              <Image source={cat} />
-             <YStack justifyContent='center'  space={2}>
+             <YStack justifyContent='center' alignItems='center' space={2}>
                 <Cookie count={`${money}`}/>
-                <Button color='#0087CD' height={20}  onPress={() => navigate("Shop")}>Порадовать Китю</Button>
+                <Button color='#0087CD' height={20} onPress={() => navigate("Shop")}>Порадовать Котика</Button>
              </YStack>   
         </XStack>
       

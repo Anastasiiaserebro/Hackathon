@@ -1,3 +1,5 @@
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
 import {
   Alert,
@@ -8,10 +10,26 @@ import {
   View,
   TextInput,
 } from "react-native";
+import { API, RootStackParamList, queryClient } from "../../../App";
+import { DialogProps } from "../DocumentDetails";
 
-const DialogReject = () => {
+const DialogReject:React.FC<DialogProps>= ({docId}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [value, setValue] = useState<string>("");
+  const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const click = () => {
+    setModalVisible(!modalVisible)
+    console.log('reject', docId)
+    mutate()
+    setTimeout(() =>  navigate("Home"), 500)
+  };
+
+  const { mutate } = useMutation({
+    mutationKey: ["sign/reject"],
+    onSuccess: () => {queryClient.invalidateQueries({queryKey:['docs']})},
+    mutationFn: () => API.post('sign', { uid: 1, docId, status: "reject"}),
+  });
 
   return (
     <View style={styles.centeredView}>
@@ -56,7 +74,7 @@ const DialogReject = () => {
               </Pressable>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
+                onPress={() => click()}
               >
                 <Text style={styles.textStyleModal}>Отправить</Text>
               </Pressable>

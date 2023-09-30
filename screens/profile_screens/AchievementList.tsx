@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native";
 
 export type AchievementType = {
   title: string;
-  subTitle: string;
+  description: string;
   id: string;
   SVG: any;
 };
@@ -12,25 +12,25 @@ export type AchievementType = {
 const achievement: AchievementType[] = [
   {
     title: "Мастер многосторонних согласований",
-    subTitle: "50 документов согласовано за неделю",
+    description: "50 документов согласовано за неделю",
     id: "1",
     SVG: require("../assets/diamond.svg").default,
   },
   {
     title: "Забытый герой",
-    subTitle: "3 дня - самый долгий срок без согласования документов",
+    description: "3 дня - самый долгий срок без согласования документов",
     id: "2",
     SVG: require("../assets/book.svg").default,
   },
   {
     title: "Быстрый старт",
-    subTitle: "Согласование в течение 10 минут после входа в приложение",
+    description: "Согласование в течение 10 минут после входа в приложение",
     id: "3",
     SVG: require("../assets/timer.svg").default,
   },
   {
     title: "Император электронных утверждений",
-    subTitle: "Император электронных утверждений",
+    description: "Император электронных утверждений",
     id: "4",
     SVG: require("../assets/approve.svg").default,
   },

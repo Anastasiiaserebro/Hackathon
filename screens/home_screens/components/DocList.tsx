@@ -31,6 +31,7 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
       API.get("docs").then((res) => res.data) as unknown as DocsType[],
   });
 
+
   const [filter, setFilter] = useState<FiltersType>(filterOptions.all);
   const [searchValue, setSearchValue] = useState<string>("");
   const [sortButton, setSortButton] = useState<SortingType>("ABC");
@@ -70,7 +71,7 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
   const docCount = getDocCount(docs);
 
   return (
-    <YStack flex={1}>
+    <YStack flex={1} height='120%'>
       <Header onSearch={onSearch} />
       <FilterButtons
         docCount={docCount}
