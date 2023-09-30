@@ -1,6 +1,6 @@
 import {XStack, styled, Text, Image} from "tamagui";
 
-import cookie from "../assets/cookie.png";
+import cookie from "../../assets/cookie.png";
 
  
 type CookieProps = {

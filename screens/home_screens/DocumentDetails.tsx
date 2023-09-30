@@ -15,7 +15,7 @@ import Checkbox from "../assets/checkbox.svg";
 import { useState } from "react";
 import cookie from "../assets/cookie.png";
 import { Timeline } from "./components/Timeline";
-import { Cookie } from "../Cookie/Cookie";
+import { Cookie } from "../components/Cookie/Cookie";
 
 type DetailsScreenProps = NativeStackScreenProps<
   RootStackParamList,

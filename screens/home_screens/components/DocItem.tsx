@@ -7,7 +7,7 @@ type DocItemProps = {
 };
 
 import Flame from '../../assets/flame.svg'
-import { Cookie } from "../../Cookie/Cookie";
+import { Cookie } from "../../components/Cookie/Cookie";
 
 export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
   const { title, category, id, date, status, statusDate } = doc;
