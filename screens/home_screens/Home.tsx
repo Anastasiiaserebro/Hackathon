@@ -13,8 +13,8 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
   };
 
   return (
-    <SafeAreaView>
-      <View backgroundColor="#fff">
+    <SafeAreaView style={{ flex: 1 }}>
+      <View flex={1} backgroundColor="#fff">
         <DocList getId={getId} />
       </View>
     </SafeAreaView>

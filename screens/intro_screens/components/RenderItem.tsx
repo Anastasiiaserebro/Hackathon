@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import React from "react";
 import Animated, {
   Extrapolate,
@@ -16,7 +22,7 @@ type Props = {
 };
 
 const RenderItem = ({ index, x, item }: Props) => {
-  const { width: SCREEN_WIDTH } = useWindowDimensions();
+  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = useWindowDimensions();
 
   const lottieAnimationStyle = useAnimatedStyle(() => {
     const translateYAnimation = interpolate(
@@ -26,8 +32,8 @@ const RenderItem = ({ index, x, item }: Props) => {
         index * SCREEN_WIDTH,
         (index + 1) * SCREEN_WIDTH,
       ],
-      [200, 0, -200],
-      Extrapolate.CLAMP,
+      [100, 0, -100],
+      Extrapolate.CLAMP
     );
 
     return {
@@ -44,7 +50,7 @@ const RenderItem = ({ index, x, item }: Props) => {
         (index + 1) * SCREEN_WIDTH,
       ],
       [1, 4, 4],
-      Extrapolate.CLAMP,
+      Extrapolate.CLAMP
     );
 
     return {
@@ -68,14 +74,12 @@ const RenderItem = ({ index, x, item }: Props) => {
         />
       </View>
       <Animated.View style={lottieAnimationStyle}>
-        <LottieView
+        <Image
           source={item.animation}
           style={{
-            width: SCREEN_WIDTH * 0.9,
-            height: SCREEN_WIDTH * 0.9,
+            width: SCREEN_WIDTH * 0.8,
+            height: SCREEN_HEIGHT * 0.6,
           }}
-          autoPlay
-          loop
         />
       </Animated.View>
       <Text style={[styles.itemText, { color: item.textColor }]}>
@@ -92,12 +96,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-around",
     alignItems: "center",
-    marginBottom: 120,
+    marginBottom: 80,
   },
   itemText: {
     textAlign: "center",
-    fontSize: 44,
-    fontWeight: "bold",
+    fontSize: 16,
+    fontWeight: "400",
     marginBottom: 10,
     marginHorizontal: 20,
   },

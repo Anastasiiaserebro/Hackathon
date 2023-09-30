@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Text, styled, XStack, YStack } from "tamagui";
+import { Avatar, Text, styled, XStack, YStack, View, Image } from "tamagui";
 
 import avatar from "../assets/avatar-1.png";
 import { Cookie } from "../components/Cookie/Cookie";
@@ -24,15 +24,9 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
       </Text>
       <CentrumYStack>
         <CentrumYStack>
-          <Avatar
-            circular
-            size="$10"
-            position="relative"
-            backgroundColor="#F5E5AE"
-          >
-            <Avatar.Image src={avatar} resizeMode="contain" flex={1} />
-            <Avatar.Fallback bc="#F49300" />
-          </Avatar>
+          <CustomAvatar>
+            <Image source={avatar} resizeMode="contain" flex={1} />
+          </CustomAvatar>
           <Level>
             <Crown>
               <Text fontSize={20}>👑</Text>
@@ -102,4 +96,14 @@ const Crown = styled(XStack, {
 const CookieText = styled(Text, {
   color: "#333F48",
   fontSize: 14,
+});
+
+const CustomAvatar = styled(View, {
+  width: 100,
+  height: 100,
+  borderRadius: 9999,
+  backgroundColor: "#F5E5AE",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });

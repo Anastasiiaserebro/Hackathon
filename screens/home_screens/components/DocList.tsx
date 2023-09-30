@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { API } from "../../../App";
 import { DocsType } from "../../../types";
 import { SafeAreaView } from "react-native";
+import { getDocCount } from "../../getDocCount";
 
 export const filterOptions = {
   all: "Всего",
@@ -24,8 +25,7 @@ type DocListProps = {
 export type SortingType = "ABC" | "DEC";
 
 export const DocList: React.FC<DocListProps> = ({ getId }) => {
-    
-  const { data: docs, isLoading } = useQuery({
+  const { data: docs } = useQuery({
     queryKey: ["docs"],
     queryFn: () =>
       API.get("docs").then((res) => res.data) as unknown as DocsType[],
@@ -60,32 +60,17 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
   });
 
   const searchResults = sortedList?.filter((item) =>
-    item.title.toLowerCase().includes(searchValue.toLowerCase()),
+    item.title.toLowerCase().includes(searchValue.toLowerCase())
   );
 
   const onSearch = (text: string) => {
     setSearchValue(text.trimStart());
   };
 
-  const getCount = (docs: DocsType[] | undefined) => {
-    const counts = { all: 0, toAgree: 0, archive: 0 };
-    docs?.forEach((doc) => {
-      if (doc.status === "new") {
-        counts.toAgree = counts.toAgree + 1;
-      } else {
-        counts.archive = counts.archive + 1;
-      }
-    });
-
-    counts.all = docs?.length ?? 0;
-    return counts;
-  };
-
-  const docCount = getCount(docs);
+  const docCount = getDocCount(docs);
 
   return (
-    <YStack marginBottom={30}>
-      {isLoading && <Spinner />}
+    <YStack flex={1}>
       <Header onSearch={onSearch} />
       <FilterButtons
         docCount={docCount}
