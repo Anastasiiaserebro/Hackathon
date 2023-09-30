@@ -30,29 +30,13 @@ const progressItems: ProgressType[] = [
     percentage:30,
     SVG: require("../../assets/stats.svg").default,
   },
-  // {
-  //   title: "Начинающий рукописец",
-  //   category:'по количеству согласований',
-  //   level: "Бронзовый",
-  //   id: "2",
-  //   percentage:30,
-  //   SVG: require("../../assets/stats.svg").default,
-  // },
-  // {
-  //   title: "Начинающий рукописец",
-  //   category:'по количеству согласований',
-  //   level: "Бронзовый",
-  //   id: "2",
-  //   percentage:30,
-  //   SVG: require("../../assets/stats.svg").default,
-  // },
 ];
 
 export const ProgressList = () => {
 
   return (
     <ScrollView>
-      <YStack space={16} padding={16}>
+      <YStack space={16} padding={10}>
         {progressItems.map(ach => (
           <ProgressItem ach={ach}/>
         )

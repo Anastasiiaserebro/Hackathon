@@ -6,7 +6,7 @@ import { Cat } from "./components/Cat";
 
 export const AchievementsScreen = () => (
   <SafeAreaView>
-    <YStack backgroundColor="#fff" height="120%" padding={28} space={40} >
+    <YStack backgroundColor="#fff" height="120%" padding={16} space={40} >
       <Text fontSize={45} fontWeight="700">
         Достижения
       </Text>

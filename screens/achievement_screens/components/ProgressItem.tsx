@@ -16,15 +16,7 @@ const getLevelStyle = (level: string) => {
 
 export const ProgressItem: React.FC<ProgressItemProps> = ({ ach }) => {
   const { category, title, level, percentage, SVG } = ach;
-
-  const LevelText = styled(Text, {
-    variants: {
-      variableColor: (level: LevelType) => ({
-        color: getLevelStyle(level),
-      }),
-    } as const,
-  });
-
+  
   return (
     <YStack space={5}>
       <Text fontSize={15} fontWeight="bold">
@@ -35,7 +27,7 @@ export const ProgressItem: React.FC<ProgressItemProps> = ({ ach }) => {
           <SVG />
         </Square>
         <TextContainer>
-          <LevelText>{level} уровень</LevelText>
+          <Text color={getLevelStyle(level)}>{level} уровень</Text>
           <Paragraph fontSize={16}>{title}</Paragraph>
           <Paragraph color="#949494">
             {percentage}% пользователей имеют такой результат
