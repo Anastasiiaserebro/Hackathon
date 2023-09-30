@@ -23,14 +23,14 @@ export const ProgressLine: React.FC<ProgressLineProps> = ({ level }) => {
         <Paragraph height={30} fontSize={20}>
           Мой прогресс
         </Paragraph>
-        <Progress size="$4" value={progress} backgroundColor="#D9D9D9">
+        <Progress size="$4" value={50} backgroundColor="#D9D9D9">
           <Progress.Indicator animation="bouncy" backgroundColor="#F49300" />
         </Progress>
         <XStack justifyContent="space-between">
           <Text>
-            {progress} из {endPoint} опыта
+            {50} из {endPoint} опыта
           </Text>
-          <Text>{level} уровень</Text>
+          <Text>{2} уровень</Text>
         </XStack>
       </YStack>
     </>

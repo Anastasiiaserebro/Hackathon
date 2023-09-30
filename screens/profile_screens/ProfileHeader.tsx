@@ -42,11 +42,11 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             </Crown>
             <Text fontSize={20}>{level}</Text>
           </Level>
-          <Cookie count="250" />
+          <Cookie count="1000" />
           <Text fontSize={20}>
             {user?.name} {user?.surname}
           </Text>
-          <Text fontSize={20}>{user?.job}</Text>
+          <JobText>{user?.job}</JobText>
         </CentrumYStack>
         <XStack
           space={0}
@@ -117,4 +117,9 @@ const CustomAvatar = styled(View, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+});
+
+const JobText = styled(Text, {
+  fontSize: 16,
+  color: "#949494",
 });
