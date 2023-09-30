@@ -25,7 +25,7 @@ type DocListProps = {
 export type SortingType = "ABC" | "DEC";
 
 export const DocList: React.FC<DocListProps> = ({ getId }) => {
-  const { data: docs, isLoading } = useQuery({
+  const { data: docs } = useQuery({
     queryKey: ["docs"],
     queryFn: () =>
       API.get("docs").then((res) => res.data) as unknown as DocsType[],
@@ -70,8 +70,7 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
   const docCount = getDocCount(docs);
 
   return (
-    <YStack marginBottom={30}>
-      {isLoading && <Spinner />}
+    <YStack flex={1}>
       <Header onSearch={onSearch} />
       <FilterButtons
         docCount={docCount}
