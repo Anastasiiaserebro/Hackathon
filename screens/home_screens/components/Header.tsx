@@ -8,17 +8,17 @@ type HeaderProps = {
 
 export const Header: React.FC<HeaderProps> = ({ onSearch }) => {
   return (
-    <XStack padding={16} space={2} alignItems="center">
+    <XStack padding={16} space={2} alignItems="center" justifyContent="flex-start">
       <Avatar circular size="$3">
         <Avatar.Image src={avatar} resizeMode="contain" flex={1} />
         <Avatar.Fallback bc="#F49300" />
       </Avatar>
       <Input
         size="$4"
-        marginLeft={15}
+        marginLeft={25}
         borderColor="#fff"
         backgroundColor="#7676801F"
-        width={220}
+        width={225}
         fontWeight="100"
         placeholder="Найти..."
         color="#000"

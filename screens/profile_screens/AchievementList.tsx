@@ -1,5 +1,5 @@
 import { ScrollView, YStack } from "tamagui";
-import { Achievement } from "./Achivment";
+import { Achievement } from "./Achievement";
 import { SafeAreaView } from "react-native";
 
 export type AchievementType = {

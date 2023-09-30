@@ -24,6 +24,7 @@ type DocListProps = {
 export type SortingType = "ABC" | "DEC";
 
 export const DocList: React.FC<DocListProps> = ({ getId }) => {
+    
   const { data: docs, isLoading } = useQuery({
     queryKey: ["docs"],
     queryFn: () =>

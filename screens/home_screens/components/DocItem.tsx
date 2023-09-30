@@ -8,7 +8,7 @@ type DocItemProps = {
 };
 
 import Flame from "../../assets/flame.svg";
-import { Cookie } from "../../Cookie/Cookie";
+import { Cookie } from "../../components/Cookie/Cookie";
 
 const getStatusStyle = (status: StatusType) => {
   if (status === "accept") {

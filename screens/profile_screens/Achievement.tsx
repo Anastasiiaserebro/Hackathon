@@ -1,4 +1,4 @@
-import { Paragraph, YStack, XStack, Circle, styled, Image } from "tamagui";
+import { Paragraph, YStack, XStack, Square, styled, Image } from "tamagui";
 
 import { AchievementType } from "./AchievementList";
 
@@ -11,9 +11,9 @@ export const Achievement: React.FC<AchievementProps> = ({ achievement }) => {
 
   return (
     <XStack space={10} alignItems="center">
-      <Circle backgroundColor="#78D498" size={50}>
+      <Square backgroundColor="#78D498" size={50}>
         <SVG />
-      </Circle>
+      </Square>
       <TextContainer>
         <Paragraph fontSize={16}>{title}</Paragraph>
         <Paragraph color="#949494">{subTitle}</Paragraph>
