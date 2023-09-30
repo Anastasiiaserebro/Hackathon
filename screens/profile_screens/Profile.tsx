@@ -5,7 +5,7 @@ import { Text, View } from "tamagui";
 const ProfileScreen = () => {
   return (
     <SafeAreaView>
-      <View>
+      <View >
         <Text color={"red12"}>Profile</Text>
       </View>
     </SafeAreaView>

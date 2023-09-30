@@ -4,7 +4,7 @@ import { Text, View } from "tamagui";
 
 export const AchievementsScreen = () => (
   <SafeAreaView>
-    <View>
+    <View backgroundColor='#fff' >
       <Text color={"$red10"}>Achievements</Text>
     </View>
   </SafeAreaView>
