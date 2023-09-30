@@ -17,6 +17,9 @@ import { ClipPath, Defs, G, Path, Rect, Svg } from "react-native-svg";
 import { Shop } from "./screens/achievement_screens/Shop";
 import Login from "./screens/login_screens/Login";
 
+import { LogBox } from "react-native";
+LogBox.ignoreLogs(["Require cycle:"]); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 
 export type RootStackParamList = {
   Home: undefined;
