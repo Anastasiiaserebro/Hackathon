@@ -1,19 +1,18 @@
-import { Button, XStack, YStack, styled, Text } from 'tamagui';
-import { FiltersType, filterOptions } from './DocList';
-import { ArrowDown, ArrowUp } from '@tamagui/lucide-icons'
-export type StatusType = 'accept' | 'reject' | 'new';
+import { Button, XStack, YStack, styled, Text } from "tamagui";
+import { FiltersType, filterOptions } from "./DocList";
+import { ArrowDown, ArrowUp } from "@tamagui/lucide-icons";
 
 type FilterButtonsProps = {
-    docCount: {
-        all:number, 
-        toAgree: number,
-        archive: number 
-    },
-    setFilter:React.Dispatch<React.SetStateAction<FiltersType>>,
-    filter:FiltersType,
-    sortButton: 'ABC' | 'DEC',
-    sortFn:() => void
-}
+  docCount: {
+    all: number;
+    toAgree: number;
+    archive: number;
+  };
+  setFilter: React.Dispatch<React.SetStateAction<FiltersType>>;
+  filter: FiltersType;
+  sortButton: "ABC" | "DEC";
+  sortFn: () => void;
+};
 
 export const FilterButtons: React.FC<FilterButtonsProps> = ({ docCount, setFilter, filter, sortButton, sortFn }) => {
     return (
@@ -47,8 +46,8 @@ export const FilterButtons: React.FC<FilterButtonsProps> = ({ docCount, setFilte
 }
 
 const StyledButton = styled(Button, {
-    backgroundColor: '#fff',
-    color: '#000',
-    width: '33%',
-    height: '$8',
-})
+  backgroundColor: "#fff",
+  color: "#000",
+  width: "33%",
+  height: "$8",
+});

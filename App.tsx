@@ -1,5 +1,5 @@
 import { useFonts } from "expo-font";
-import { TamaguiProvider } from "tamagui";
+import { TamaguiProvider, View } from "tamagui";
 import config from "./tamagui.config";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -9,13 +9,19 @@ import { DetailsScreen } from "./screens/home_screens/DocumentDetails";
 import ProfileScreen from "./screens/profile_screens/Profile";
 import { AchievementsScreen } from "./screens/achievement_screens/Achievements";
 import { Ionicons } from "@expo/vector-icons";
-
+import OnboardingScreen from "./screens/intro_screens/OnboardingScreen";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import axios from "axios";
 
 export type RootStackParamList = {
   Home: undefined;
   DocumentDetails: { id: string };
   Profile: undefined;
   Achievements: undefined;
+  Login: undefined;
+  MainApp: undefined;
+  SignIn: undefined;
+  Onboarding: undefined;
 };
 
 const iconSize = 16;
@@ -96,6 +102,26 @@ function TabNavigator() {
   );
 }
 
+function InitialNavigator() {
+  return (
+    <RootStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="MainApp"
+    >
+      <RootStack.Screen name="Onboarding" component={OnboardingScreen} />
+      <RootStack.Screen name="Login" component={View} />
+      <RootStack.Screen name="SignIn" component={View} />
+      <RootStack.Screen name="MainApp" component={TabNavigator} />
+    </RootStack.Navigator>
+  );
+}
+
+const queryClient = new QueryClient();
+
+export const API = axios.create({
+  baseURL: "http://158.160.3.183:5000/",
+});
+
 export default function App() {
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
@@ -107,10 +133,12 @@ export default function App() {
   }
 
   return (
-    <TamaguiProvider config={config} defaultTheme="light" >
-      <NavigationContainer>
-        <TabNavigator />
-      </NavigationContainer>
-    </TamaguiProvider>  
+    <QueryClientProvider client={queryClient}>
+      <TamaguiProvider config={config} defaultTheme="light">
+        <NavigationContainer>
+          <InitialNavigator />
+        </NavigationContainer>
+      </TamaguiProvider>
+    </QueryClientProvider>
   );
 }
