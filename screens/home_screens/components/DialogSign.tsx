@@ -13,18 +13,15 @@ const DialogSign: React.FC<DialogProps> = ({ docId }) => {
   const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
 
   const click = () => {
-    setModalVisible(!modalVisible);
-    mutate();
-    setAchievementsModalVisible(true);
+    setModalVisible(!modalVisible)
+    mutate()
+    setTimeout(() =>  navigate("Home"), 500)
   };
 
   const { mutate } = useMutation({
     mutationKey: ["sign/accept"],
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["docs"] });
-    },
-    mutationFn: () =>
-      API.post("sign", { uid: 1, docId: docId, status: "accept" }),
+    onSuccess: () => {queryClient.invalidateQueries({queryKey:['docs']})},
+    mutationFn: () => API.get(`sign/?uid=1&docId=${docId}&status=accept`),
   });
 
   return (

@@ -28,7 +28,7 @@ const DialogReject:React.FC<DialogProps>= ({docId}) => {
   const { mutate } = useMutation({
     mutationKey: ["sign/reject"],
     onSuccess: () => {queryClient.invalidateQueries({queryKey:['docs']})},
-    mutationFn: () => API.post('sign', { uid: 1, docId, status: "reject"}),
+    mutationFn: () => API.get(`sign/?uid=1&docId=${docId}&status=reject`),
   });
 
   return (

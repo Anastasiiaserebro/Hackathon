@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-import { RootStackParamList } from "../../App";
+import { API, RootStackParamList } from "../../App";
 import { Button, PortalProvider, Text, View, XStack, YStack, styled } from "tamagui";
 import PdfLogo from "../assets/pdf.svg";
 import Checkbox from "../assets/checkbox.svg";
@@ -9,6 +9,7 @@ import { Timeline } from "./components/Timeline";
 import { Cookie } from "../components/Cookie/Cookie";
 import DialogSign from "./components/DialogSign";
 import DialogReject from "./components/DialogReject";
+import { useQuery } from "@tanstack/react-query";
 
 type DetailsScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -50,7 +51,7 @@ export function DetailsScreen({ navigation, route}: DetailsScreenProps) {
           <YStack flex={1}>
             <HeaderText>ОС-2</HeaderText>
             <HeaderText>
-              Накладная на внутреннее перемещение основных средств
+              Накладная на внутреннее перемещение стола
             </HeaderText>
           </YStack>
           <Cookie count="+25" />

@@ -33,15 +33,9 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
       </Text>
       <CentrumYStack>
         <CentrumYStack>
-          <CustomAvatar>
+          <CustomAvatar position="relative">
             <Image source={avatar} resizeMode="contain" flex={1} />
           </CustomAvatar>
-          <Level>
-            <Crown>
-              <Text fontSize={20}>👑</Text>
-            </Crown>
-            <Text fontSize={20}>{level}</Text>
-          </Level>
           <Cookie count="1000" />
           <Text fontSize={20}>
             {user?.name} {user?.surname}
