@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-import { RootStackParamList } from "../../App";
+import { type RootStackParamList } from "../../App";
 import { View } from "tamagui";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DocList } from "./components/DocList";

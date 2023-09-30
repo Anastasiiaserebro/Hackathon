@@ -8,7 +8,7 @@ type CookieProps = {
 
 export const Cookie = ({ count }: CookieProps) => {
   return (
-    <XStack alignItems="center" justifyContent="center" width={40}>
+    <XStack alignItems="center" justifyContent="center" width={40} height={30}>
       <Image source={cookie} maxWidth={32} maxHeight={32} />
       <CookieText>{count}</CookieText>
     </XStack>

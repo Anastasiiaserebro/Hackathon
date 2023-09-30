@@ -1,11 +1,10 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { RootStackParamList } from "../../App";
-import { Button, Text, View, XStack, YStack, Image, styled } from "tamagui";
+import { Button, Text, View, XStack, YStack, styled } from "tamagui";
 import PdfLogo from "../assets/pdf.svg";
 import Checkbox from "../assets/checkbox.svg";
 import { useState } from "react";
-import cookie from "../assets/cookie.png";
 import { Timeline } from "./components/Timeline";
 import { Cookie } from "../components/Cookie/Cookie";
 

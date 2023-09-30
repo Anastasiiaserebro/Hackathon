@@ -1,7 +1,6 @@
 import { Button, XStack, YStack, styled, Text } from "tamagui";
 import { FiltersType, filterOptions } from "./DocList";
 import { ArrowDown, ArrowUp } from "@tamagui/lucide-icons";
-export type StatusType = "accept" | "reject" | "new";
 
 type FilterButtonsProps = {
   docCount: {

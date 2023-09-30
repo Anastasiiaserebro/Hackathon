@@ -7,7 +7,7 @@ import { ProgressLine } from "./ProgressLine";
 import { AchievementList } from "./AchievementList";
 import { ProfileHeader } from "./ProfileHeader";
 
-const ProfileScreen = () => {
+export const ProfileScreen = () => {
   const [level, setLevel] = useState<number>(4);
   const docCount = getDocCount(docs);
 
@@ -21,5 +21,3 @@ const ProfileScreen = () => {
     </SafeAreaView>
   );
 };
-
-export default ProfileScreen;

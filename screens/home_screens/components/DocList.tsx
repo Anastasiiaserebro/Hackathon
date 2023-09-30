@@ -1,21 +1,12 @@
-import { YStack, ScrollView, XStack } from "tamagui";
+import { YStack, ScrollView, Spinner } from "tamagui";
 import { useState } from "react";
-import { docs } from "../../docs";
 import { FilterButtons } from "./FilterButtons";
 import { DocItem } from "./DocItem";
 import { Header } from "./Header";
-import { getDocCount } from "../../getDocCount";
+import { useQuery } from "@tanstack/react-query";
+import { API } from "../../../App";
+import { DocsType } from "../../../types";
 import { SafeAreaView } from "react-native";
-export type StatusType = "accept" | "reject" | "new";
-
-export type DocsType = {
-  title: string;
-  category: string;
-  id: string;
-  date: string;
-  status: StatusType;
-  statusDate: string;
-};
 
 export const filterOptions = {
   all: "Всего",
@@ -33,6 +24,13 @@ type DocListProps = {
 export type SortingType = "ABC" | "DEC";
 
 export const DocList: React.FC<DocListProps> = ({ getId }) => {
+    
+  const { data: docs, isLoading } = useQuery({
+    queryKey: ["docs"],
+    queryFn: () =>
+      API.get("docs").then((res) => res.data) as unknown as DocsType[],
+  });
+
   const [filter, setFilter] = useState<FiltersType>(filterOptions.all);
   const [searchValue, setSearchValue] = useState<string>("");
   const [sortButton, setSortButton] = useState<SortingType>("ABC");
@@ -45,7 +43,7 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
     }
   };
 
-  const filteredList: DocsType[] = docs.filter((doc) => {
+  const filteredList = docs?.filter((doc) => {
     if (filter === filterOptions.toAgree) {
       return doc.status === "new";
     } else if (filter === filterOptions.archive) {
@@ -54,14 +52,14 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
     return true;
   });
 
-  const sortedList = filteredList.sort((a, b) => {
+  const sortedList = filteredList?.sort((a, b) => {
     if (sortButton === "ABC") {
       return Date.parse(a.date) - Date.parse(b.date);
     }
     return Date.parse(b.date) - Date.parse(a.date);
   });
 
-  const searchResults = sortedList.filter((item) =>
+  const searchResults = sortedList?.filter((item) =>
     item.title.toLowerCase().includes(searchValue.toLowerCase()),
   );
 
@@ -69,10 +67,25 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
     setSearchValue(text.trimStart());
   };
 
-  const docCount = getDocCount(docs);
+  const getCount = (docs: DocsType[] | undefined) => {
+    const counts = { all: 0, toAgree: 0, archive: 0 };
+    docs?.forEach((doc) => {
+      if (doc.status === "new") {
+        counts.toAgree = counts.toAgree + 1;
+      } else {
+        counts.archive = counts.archive + 1;
+      }
+    });
+
+    counts.all = docs?.length ?? 0;
+    return counts;
+  };
+
+  const docCount = getCount(docs);
 
   return (
-    <YStack>
+    <YStack marginBottom={30}>
+      {isLoading && <Spinner />}
       <Header onSearch={onSearch} />
       <FilterButtons
         docCount={docCount}
@@ -82,9 +95,9 @@ export const DocList: React.FC<DocListProps> = ({ getId }) => {
         sortFn={sortFn}
       />
       <SafeAreaView>
-        <ScrollView paddingBottom={600} flex={1}>
+        <ScrollView>
           <YStack flex={1} space={16} padding={16}>
-            {searchResults.map((doc) => (
+            {searchResults?.map((doc) => (
               <DocItem key={doc.id} doc={doc} getId={getId} />
             ))}
           </YStack>

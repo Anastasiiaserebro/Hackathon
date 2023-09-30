@@ -1,5 +1,5 @@
 import { ScrollView, YStack } from "tamagui";
-import { Achievement } from "./Achivment";
+import { Achievement } from "./Achievement";
 import { SafeAreaView } from "react-native";
 
 export type AchievementType = {
@@ -8,8 +8,6 @@ export type AchievementType = {
   id: string;
   SVG: any;
 };
-
-console.log(require("../assets/diamond.svg"));
 
 const achievement: AchievementType[] = [
   {
