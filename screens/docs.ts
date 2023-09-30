@@ -1,4 +1,4 @@
-import { DocsType } from "./DocList"
+import { DocsType } from "./home_screens/components/DocList"
 export const docs:DocsType[] = [
     {
         title: "Накладная",

@@ -6,6 +6,9 @@ type DocItemProps = {
   getId: (id: string) => void;
 };
 
+import Flame from '../../assets/flame.svg'
+import { Cookie } from "../../Cookie/Cookie";
+
 export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
   const { title, category, id, date, status, statusDate } = doc;
 
@@ -51,10 +54,16 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
       <XStack>
         <LineView variableColor={status}></LineView>
         <YStack space={8}>
-          <Text>{id}</Text>
+          <XStack space={30} alignItems="center">
+            <Text>{id}</Text>
+            {status === 'new' &&  <Cookie count='+25'/>} 
+          </XStack>
           <Text>{category}</Text>
           <Text>{title}</Text>
-          <DateText variableColor={status}>{statusDate}</DateText>
+          <XStack space={5}>
+            <DateText variableColor={status}>{statusDate}</DateText>
+           {status === 'new' && <Flame />}
+          </XStack> 
         </YStack>
       </XStack>
       <YStack justifyContent="flex-start" height="100%">
