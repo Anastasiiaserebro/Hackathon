@@ -27,8 +27,7 @@ type Props = {
 
 const CustomButton = ({ flatListRef, flatListIndex, dataLength, x }: Props) => {
   const { width: SCREEN_WIDTH } = useWindowDimensions();
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<any>();
 
   const buttonAnimationStyle = useAnimatedStyle(() => {
     return {
@@ -91,7 +90,7 @@ const CustomButton = ({ flatListRef, flatListIndex, dataLength, x }: Props) => {
             index: flatListIndex.value + 1,
           });
         } else {
-          navigation.navigate("Home");
+          navigation.navigate("MainApp");
         }
       }}
     >

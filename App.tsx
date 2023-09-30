@@ -10,6 +10,8 @@ import ProfileScreen from "./screens/profile_screens/Profile";
 import { AchievementsScreen } from "./screens/achievement_screens/Achievements";
 import { Ionicons } from "@expo/vector-icons";
 import OnboardingScreen from "./screens/intro_screens/OnboardingScreen";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import axios from "axios";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -102,7 +104,10 @@ function TabNavigator() {
 
 function InitialNavigator() {
   return (
-    <RootStack.Navigator screenOptions={{ headerShown: false }}>
+    <RootStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="MainApp"
+    >
       <RootStack.Screen name="Onboarding" component={OnboardingScreen} />
       <RootStack.Screen name="Login" component={View} />
       <RootStack.Screen name="SignIn" component={View} />
@@ -110,6 +115,12 @@ function InitialNavigator() {
     </RootStack.Navigator>
   );
 }
+
+const queryClient = new QueryClient();
+
+export const API = axios.create({
+  baseURL: "http://158.160.3.183:5000/",
+});
 
 export default function App() {
   const [loaded] = useFonts({
@@ -122,10 +133,12 @@ export default function App() {
   }
 
   return (
-    <TamaguiProvider config={config} defaultTheme="light">
-      <NavigationContainer>
-        <InitialNavigator />
-      </NavigationContainer>
-    </TamaguiProvider>
+    <QueryClientProvider client={queryClient}>
+      <TamaguiProvider config={config} defaultTheme="light">
+        <NavigationContainer>
+          <InitialNavigator />
+        </NavigationContainer>
+      </TamaguiProvider>
+    </QueryClientProvider>
   );
 }
