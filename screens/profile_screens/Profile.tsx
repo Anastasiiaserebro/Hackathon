@@ -27,7 +27,7 @@ export const ProfileScreen = () => {
   return (
     <SafeAreaView>
       <YStack backgroundColor="#fff" height="120%" padding={28} space={40}>
-        <ProfileHeader level={user?.lvl} docCount={docCount} />
+        <ProfileHeader level={user?.lvl} docCount={docCount} coins={1000}/>
         <ProgressLine level={user?.lvl} />
         <AchievementList />
       </YStack>

@@ -14,9 +14,6 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useNavigation } from "@react-navigation/native";
-import { OnboardingData } from "../data/data";
-import { RootStackParamList } from "../../../App";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 type Props = {
   dataLength: number;

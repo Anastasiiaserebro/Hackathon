@@ -105,7 +105,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16,
     fontWeight: "400",
-    //marginBottom: 10, ////
     marginHorizontal: 20,
   },
   circleContainer: {

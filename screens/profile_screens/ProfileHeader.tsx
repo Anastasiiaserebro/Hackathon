@@ -9,6 +9,7 @@ import { User } from "../../types";
 
 type ProfileHeaderProps = {
   level: number | undefined;
+  coins:number | undefined;
   docCount: {
     all: number;
     toAgree: number;
@@ -19,6 +20,7 @@ type ProfileHeaderProps = {
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   level,
   docCount,
+  coins
 }) => {
   const { data: user } = useQuery({
     queryKey: ["user"],
@@ -36,7 +38,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           <CustomAvatar position="relative">
             <Image source={avatar} resizeMode="contain" flex={1} />
           </CustomAvatar>
-          <Cookie count="1000" />
+          <Cookie count={`${coins}`} />
           <Text fontSize={20}>
             {user?.name} {user?.surname}
           </Text>
@@ -49,7 +51,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           justifyContent="center"
         >
           <YStack alignItems="center" space={3} width="33%">
-            <StyledText>0</StyledText>
+            <StyledText>{user?.new}</StyledText>
             <Text color="#333F48">В работе</Text>
           </YStack>
           <YStack alignItems="center" space={3} width="33%">

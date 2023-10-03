@@ -1,4 +1,4 @@
-import { StyleSheet, View, FlatList, ViewToken } from "react-native";
+import { StyleSheet, View, ViewToken } from "react-native";
 import React from "react";
 import Animated, {
   useSharedValue,
@@ -8,7 +8,7 @@ import Animated, {
 import CustomButton from "./components/CustomButton";
 import Pagination from "./components/Pagination";
 import RenderItem from "./components/RenderItem";
-import data from "./data/data";
+import data from "./data/data"
 
 const OnboardingScreen = () => {
   const flatListRef = useAnimatedRef<any>();
