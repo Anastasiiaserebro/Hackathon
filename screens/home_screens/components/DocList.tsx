@@ -8,6 +8,7 @@ import { API } from "../../../App";
 import { DocsType } from "../../../types";
 import { SafeAreaView } from "react-native";
 import { getDocCount } from "../../getDocCount";
+//import { docs } from "../docs";
 
 export const filterOptions = {
   all: "Всего",

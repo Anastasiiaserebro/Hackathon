@@ -38,7 +38,7 @@ export const ProgressList = () => {
     <ScrollView>
       <YStack space={16} padding={10}>
         {progressItems.map(ach => (
-          <ProgressItem ach={ach}/>
+          <ProgressItem key={ach.id} ach={ach}/>
         )
 
         )}

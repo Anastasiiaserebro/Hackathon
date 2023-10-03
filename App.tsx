@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeScreen } from "./screens/home_screens/Home";
 import { DetailsScreen } from "./screens/home_screens/DocumentDetails";
 import { ProfileScreen } from "./screens/profile_screens/Profile";
+import { Document } from './screens/home_screens/Document'
 import { AchievementsScreen } from "./screens/achievement_screens/Achievements";
 import OnboardingScreen from "./screens/intro_screens/OnboardingScreen";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -25,6 +26,7 @@ export type RootStackParamList = {
   Home: undefined;
   DocumentDetails: { id: string };
   Shop: undefined;
+  Document:undefined;
   Profile: undefined;
   Achievements: undefined;
   Login: undefined;
@@ -54,6 +56,16 @@ export function HomeStackNavigator() {
           headerTitle: "",
           animation: "slide_from_right",
         }}
+        
+      />
+      <RootStack.Screen
+        name="Document"
+        component={Document}
+        options={{
+          headerBackTitle: "Назад",
+          headerTitle: "",
+          animation: "slide_from_right",
+        }}
       />
     </RootStack.Navigator>
   );
@@ -71,9 +83,9 @@ function AchievementsStackNavigator() {
   return (
     <RootStack.Navigator
       initialRouteName="Achievements"
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: false }}  
     >
-      <RootStack.Screen name="Achievements" component={AchievementsScreen} />
+    <RootStack.Screen name="Achievements" component={AchievementsScreen}/>
       <RootStack.Screen
         name="Shop"
         component={Shop}
@@ -194,11 +206,11 @@ function InitialNavigator() {
 export const queryClient = new QueryClient();
 
 export const API = axios.create({
-  baseURL: "http://158.160.31.243:5000/",
+  baseURL: "http://62.84.122.239:5000/",
 });
 
 export default function App() {
-  registerNNPushToken(12815, "ssq0xHjzNPqeyT9i0bPRDb");
+  registerNNPushToken(12891, 'WOhKYH9xuOYishcVjNKhfp');
 
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),

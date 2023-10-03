@@ -78,7 +78,8 @@ const RenderItem = ({ index, x, item }: Props) => {
           source={item.animation}
           style={{
             width: SCREEN_WIDTH * 0.8,
-            height: SCREEN_HEIGHT * 0.6,
+            height: SCREEN_HEIGHT * 6, 
+            objectFit: 'scale-down', 
           }}
         />
       </Animated.View>
@@ -97,12 +98,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     marginBottom: 80,
+    paddingTop:60,
+    paddingBottom:60,
   },
   itemText: {
     textAlign: "center",
     fontSize: 16,
     fontWeight: "400",
-    marginBottom: 10,
+    //marginBottom: 10, ////
     marginHorizontal: 20,
   },
   circleContainer: {

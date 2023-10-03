@@ -40,7 +40,7 @@ const DialogSign: React.FC<DialogProps> = ({ docId }) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.textStyleModal}>Документ подписан</Text>
-            <Text style={styles.textStyle_2}>Получите 20 золотых монет</Text>
+            <Text style={styles.textStyle_2}>Получите 500 золотых монет</Text>
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
@@ -65,8 +65,8 @@ const DialogSign: React.FC<DialogProps> = ({ docId }) => {
           <View style={styles.modalView2}>
             <LottieView
               style={{
-                marginTop: -90,
-                marginBottom: 20,
+                marginTop: 0,
+                marginBottom: 60,
               }}
               source={require("./animation.json")}
               speed={0.5}

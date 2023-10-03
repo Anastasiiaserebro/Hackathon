@@ -67,13 +67,13 @@ const DialogReject:React.FC<DialogProps>= ({docId}) => {
             </View>
             <View style={styles.flex}>
               <Pressable
-                style={[styles.button, styles.buttonClose]}
+                style={[styles.button, styles.buttonReject]}
                 onPress={() => setModalVisible(!modalVisible)}
               >
                 <Text style={styles.textStyleModal}>Отменить</Text>
               </Pressable>
               <Pressable
-                style={[styles.button, styles.buttonClose]}
+                style={[styles.button, styles.buttonSend]}
                 onPress={() => click()}
               >
                 <Text style={styles.textStyleModal}>Отправить</Text>
@@ -128,8 +128,11 @@ const styles = StyleSheet.create({
   buttonOpen: {
     backgroundColor: "#fff",
   },
-  buttonClose: {
+  buttonSend: {
     backgroundColor: "#2196F3",
+  },
+  buttonReject: {
+    backgroundColor: "#949494",
   },
   textStyle: {
     color: "#DB0D60",

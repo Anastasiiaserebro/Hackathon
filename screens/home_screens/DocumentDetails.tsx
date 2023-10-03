@@ -9,7 +9,7 @@ import { Timeline } from "./components/Timeline";
 import { Cookie } from "../components/Cookie/Cookie";
 import DialogSign from "./components/DialogSign";
 import DialogReject from "./components/DialogReject";
-import { useQuery } from "@tanstack/react-query";
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 type DetailsScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -36,8 +36,25 @@ const timelineData = [
 ];
 
 export function DetailsScreen({ navigation, route}: DetailsScreenProps) {
+  const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
   const docId = route.params.id;
   const [documentOpeneded, setDocumentOpened] = useState(false);
+
+  const something = (function() {
+    let executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            setDocumentOpened(true)
+        }
+    };
+  })();
+
+  const click = () => {
+    navigate("Document")
+    setTimeout(() => something() ,300) 
+    
+  }
 
   return (
     <Wrapper flex={1} backgroundColor="#fff">
@@ -54,13 +71,15 @@ export function DetailsScreen({ navigation, route}: DetailsScreenProps) {
               Накладная на внутреннее перемещение стола
             </HeaderText>
           </YStack>
-          <Cookie count="+25" />
+          <Cookie count="+500" />
         </HeaderWrapper>
 
         <Button unstyled onPress={() => setDocumentOpened(true)}>
           <XStack space="$3" alignItems="center">
             <PdfLogo width={28} height={32} />
-            <LinkText>Открыть документ</LinkText>
+            <Button onPress={() =>click()}>
+              <LinkText >Открыть документ</LinkText>
+            </Button>
             {documentOpeneded && <Checkbox width={16} height={16} />}
           </XStack>
         </Button>
@@ -91,17 +110,18 @@ export function DetailsScreen({ navigation, route}: DetailsScreenProps) {
 
         <YStack space="$2">
           <SubHeader>Автор</SubHeader>
-          <Value>Невменько А.Г</Value>
+          <Value>Невменько А. Г.</Value>
         </YStack>
         <Timeline timelineData={timelineData} />
       </YStack>
       <XStack> 
         <PortalProvider>
-            <DialogSign docId={docId}/>
-        </PortalProvider>
-        <PortalProvider>
             <DialogReject  docId={docId}/>
         </PortalProvider>
+        <PortalProvider>
+            <DialogSign docId={docId}/>
+        </PortalProvider>
+
       </XStack>
     </Wrapper>
   );
@@ -143,19 +163,3 @@ const Value = styled(Text, {
   color: "#333F48",
 });
 
-const RejectButton = styled(Button, {
-  color: "#DB0D60",
-  padding: 13,
-  paddingLeft: 20,
-  paddingRight: 20,
-  borderRadius: 10,
-});
-
-const SignButton = styled(Button, {
-  padding: 13,
-  paddingLeft: 20,
-  paddingRight: 20,
-  color: "white",
-  backgroundColor: "#007AFF",
-  borderRadius: 10,
-});

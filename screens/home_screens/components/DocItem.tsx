@@ -1,5 +1,6 @@
-import { XStack, YStack, Text, styled, ListItem, View } from "tamagui";
+import { XStack, YStack, Text, styled, ListItem, View, Image} from "tamagui";
 import { DocsType } from "../../../types";
+import LottieView from "lottie-react-native";
 
 export type StatusType = "accept" | "reject" | "new";
 type DocItemProps = {
@@ -7,7 +8,9 @@ type DocItemProps = {
   getId: (id: string) => void;
 };
 
-import Flame from "../../assets/flame.svg";
+
+//import Flame from "../../assets/";
+import animation from '../../assets/Animation.gif'
 import { Cookie } from "../../components/Cookie/Cookie";
 
 const getStatusStyle = (status: StatusType) => {
@@ -19,6 +22,12 @@ const getStatusStyle = (status: StatusType) => {
   return "#949494";
 };
 const formatter = new Intl.DateTimeFormat("ru");
+
+const statusOptions = {
+  accept: 'Согласовано',
+  reject: 'Отклонено',
+  new:'Контрольный срок'
+}
 
 export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
   const { title, category, id, date, status, statusDate } = doc;
@@ -45,6 +54,7 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
   });
 
   const formatterDate = formatter.format(new Date(date));
+  const formatterStatusDate = formatter.format(new Date(statusDate));
 
   return (
     <ListItem
@@ -61,11 +71,14 @@ export const DocItem: React.FC<DocItemProps> = ({ doc, getId }) => {
           </XStack>
           <Category>{category}</Category>
           <Text  width={220} >{title}</Text>
-          <XStack space={5}>
+          <XStack space={5} alignItems="center">
             <DateText variableColor={status as StatusType}>
-              {statusDate}
+            {statusOptions[status as keyof typeof statusOptions]} {formatterStatusDate}
             </DateText>
-            {status === "new" && <Flame />}
+            {status === "new" && <XStack width={10} height={10} marginBottom={18}><Image source={animation}  resizeMode="contain"
+          maxWidth={24}
+          maxHeight={24}/></XStack>
+            }
           </XStack>
         </YStack>
       </XStack>

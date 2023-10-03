@@ -49,7 +49,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           justifyContent="center"
         >
           <YStack alignItems="center" space={3} width="33%">
-            <StyledText>{user?.new}</StyledText>
+            <StyledText>0</StyledText>
             <Text color="#333F48">В работе</Text>
           </YStack>
           <YStack alignItems="center" space={3} width="33%">

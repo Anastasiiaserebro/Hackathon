@@ -17,7 +17,6 @@ export const ProfileScreen = () => {
       API.get("/get_user/1").then((res) => res.data) as unknown as User,
   });
 
-  const [level, setLevel] = useState<number>(2);
   const { data: docs } = useQuery({
     queryKey: ["docs"],
     queryFn: () =>

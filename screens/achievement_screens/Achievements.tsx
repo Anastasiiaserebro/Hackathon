@@ -10,7 +10,7 @@ export const AchievementsScreen = () => (
       <Text fontSize={45} fontWeight="700">
         Достижения
       </Text>
-      <Cat money={200} />
+      <Cat money={1000} />
       <ProgressList />
     </YStack>
   </SafeAreaView>
