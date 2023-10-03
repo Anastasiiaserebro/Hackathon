@@ -26,7 +26,7 @@ export type RootStackParamList = {
   Home: undefined;
   DocumentDetails: { id: string };
   Shop: undefined;
-  Document:undefined;
+  Document: undefined;
   Profile: undefined;
   Achievements: undefined;
   Login: undefined;
@@ -56,7 +56,7 @@ export function HomeStackNavigator() {
           headerTitle: "",
           animation: "slide_from_right",
         }}
-        
+
       />
       <RootStack.Screen
         name="Document"
@@ -83,9 +83,9 @@ function AchievementsStackNavigator() {
   return (
     <RootStack.Navigator
 
-      screenOptions={{ headerShown: false }}  
+      screenOptions={{ headerShown: false }}
     >
-    <RootStack.Screen name="Achievements" component={AchievementsScreen}  options={{ headerShown: false }}/>
+      <RootStack.Screen name="Achievements" component={AchievementsScreen} options={{ headerShown: false }} />
       <RootStack.Screen
         name="Shop"
         component={Shop}
@@ -206,7 +206,7 @@ function InitialNavigator() {
 export const queryClient = new QueryClient();
 
 export const API = axios.create({
-  baseURL: "http://127.0.0.1/",
+  baseURL: "http://192.168.1.28:5000/",
 });
 
 export default function App() {
