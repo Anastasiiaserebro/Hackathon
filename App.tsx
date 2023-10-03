@@ -206,7 +206,7 @@ function InitialNavigator() {
 export const queryClient = new QueryClient();
 
 export const API = axios.create({
-  baseURL: "http://62.84.122.239:5000/",
+  baseURL: "http://127.0.0.1/",
 });
 
 export default function App() {
