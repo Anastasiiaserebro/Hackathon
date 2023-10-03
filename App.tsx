@@ -82,10 +82,10 @@ function ProfileStackNavigator() {
 function AchievementsStackNavigator() {
   return (
     <RootStack.Navigator
-      initialRouteName="Achievements"
+
       screenOptions={{ headerShown: false }}  
     >
-    <RootStack.Screen name="Achievements" component={AchievementsScreen}/>
+    <RootStack.Screen name="Achievements" component={AchievementsScreen}  options={{ headerShown: false }}/>
       <RootStack.Screen
         name="Shop"
         component={Shop}

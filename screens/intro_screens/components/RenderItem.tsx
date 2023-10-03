@@ -78,7 +78,7 @@ const RenderItem = ({ index, x, item }: Props) => {
           source={item.animation}
           style={{
             width: SCREEN_WIDTH * 0.8,
-            height: SCREEN_HEIGHT * 6, 
+            height: SCREEN_HEIGHT * 0.6, 
             objectFit: 'scale-down', 
           }}
         />

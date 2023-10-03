@@ -25,7 +25,7 @@ export const Shop = ({ navigation, route }: ShopProps) => {
   const [bought, setBought] = useState<boolean>(false);
 
   return (
-    <YStack height="120%" backgroundColor="#fff" paddingTop={50}>
+    <YStack height="120%" backgroundColor="#fff">
       <YStack padding={16} space={40}>
         <Text fontSize={36} fontWeight="700">
           Порадовать Мурчика
